@@ -6,12 +6,11 @@
 //  Copyright © 2019 Riley Testut. All rights reserved.
 //
 
-import Foundation
 import AltSign
 import minimuxer
+import Foundation
 
-enum OperationError: LocalizedError
-{
+enum OperationError: LocalizedError {
     static let domain = OperationError.unknown._domain
     
     case unknown
@@ -33,6 +32,8 @@ enum OperationError: LocalizedError
     
     case openAppFailed(name: String)
     case missingAppGroup
+    case cowExploitNoFDA
+    case cowExploitFailedPatchd
     
     var failureReason: String? {
         switch self {
@@ -49,22 +50,21 @@ enum OperationError: LocalizedError
         case .openAppFailed(let name): return String(format: NSLocalizedString("SideStore was denied permission to launch %@.", comment: ""), name)
         case .missingAppGroup: return NSLocalizedString("SideStore's shared app group could not be found.", comment: "")
         case .maximumAppIDLimitReached: return NSLocalizedString("Cannot register more than 10 App IDs.", comment: "")
+        case .cowExploitNoFDA: return NSLocalizedString("Unable to get Full Disk Access using exploit.", comment: "")
+        case .cowExploitFailedPatchd: return NSLocalizedString("Unable to patch installd using exploit.", comment: "")
         }
     }
     
     var recoverySuggestion: String? {
-        switch self
-        {
+        switch self {
         case .maximumAppIDLimitReached(let application, let requiredAppIDs, let availableAppIDs, let date):
             let baseMessage = NSLocalizedString("Delete sideloaded apps to free up App ID slots.", comment: "")
             let message: String
             
-            if requiredAppIDs > 1
-            {
+            if requiredAppIDs > 1 {
                 let availableText: String
                 
-                switch availableAppIDs
-                {
+                switch availableAppIDs {
                 case 0: availableText = NSLocalizedString("none are available", comment: "")
                 case 1: availableText = NSLocalizedString("only 1 is available", comment: "")
                 default: availableText = String(format: NSLocalizedString("only %@ are available", comment: ""), NSNumber(value: availableAppIDs))
@@ -73,8 +73,7 @@ enum OperationError: LocalizedError
                 let prefixMessage = String(format: NSLocalizedString("%@ requires %@ App IDs, but %@.", comment: ""), application.name, NSNumber(value: requiredAppIDs), availableText)
                 message = prefixMessage + " " + baseMessage
             }
-            else
-            {
+            else {
                 let dateComponents = Calendar.current.dateComponents([.day, .hour, .minute], from: Date(), to: date)
                 
                 let dateComponentsFormatter = DateComponentsFormatter()
