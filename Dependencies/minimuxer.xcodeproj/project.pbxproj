@@ -18,6 +18,8 @@
 			filePatterns = "*/minimuxer.h";
 			fileType = pattern.proxy;
 			inputFiles = (
+				"./minimuxer/libminimuxer-ios.a",
+				"./minimuxer/libminimuxer-sim.a",
 			);
 			isEditable = 0;
 			name = "Cargo project build";
@@ -150,6 +152,8 @@
 				./minimuxer/minimuxer.swift,
 				./minimuxer/SwiftBridgeCore.swift,
 				"./minimuxer/minimuxer-Bridging-Header.h",
+				"./minimuxer/libminimuxer-ios.a",
+				"./minimuxer/libminimuxer-sim.a",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

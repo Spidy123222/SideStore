@@ -27,6 +27,9 @@ jobs:
       - name: Change version to tag
         run: sed -e '/MARKETING_VERSION = .*/s/= .*/= ${{ github.ref_name }}/' -i '' Build.xcconfig
 
+      - name: Change default icon to beta icon
+        run: sed -e 's/= Neon/= Starburst/' -i '' ./AltStore.xcodeproj/project.pbxproj
+
       - name: Get version
         id: version
         run: echo "version=$(grep MARKETING_VERSION Build.xcconfig | sed -e "s/MARKETING_VERSION = //g")" >> $GITHUB_OUTPUT

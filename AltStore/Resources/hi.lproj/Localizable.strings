@@ -1,0 +1,128 @@
+/* 
+  Localizable.strings
+  AltStore
+
+  Created by Fabian Thies on 22.12.22.
+
+  Modified by mindfreakdev on 26.12.22
+
+  Copyright © 2022 SideStore. All rights reserved.
+*/
+
+
+/* NewsView */
+"NewsView.title" = "समाचार";
+"NewsView.Section.FromSources.title" = "अपने सूत्रों से";
+
+
+/* BrowseView */
+"BrowseView.title" = "ब्राउज़";
+"BrowseView.search" = "खोज";
+"BrowseView.Section.PromotedCategories.title" = "प्रचारित श्रेणियां";
+"BrowseView.Section.PromotedCategories.showAll" = "सब दिखाएं";
+"BrowseView.Section.AllApps.title" = "सभी एप्लीकेशन";
+"BrowseView.Actions.sources" = "सूत्रों का कहना है";
+"BrowseView.Categories.gamesAndEmulators" = "गेम्स और\nएम्युलेटर्स";
+
+/* RootView */
+"RootView.news" = "समाचार";
+"RootView.browse" = "ब्राउज़";
+"RootView.myApps" = "मेरी एप्प्स";
+"RootView.settings" = "समायोजन";
+
+/* SettingsView */
+"SettingsView.ConnectedAppleID.name" = "नाम";
+"SettingsView.ConnectedAppleID.eMail" = "ईमेल";
+"SettingsView.ConnectedAppleID.type" = "टाइप";
+"SettingsView.ConnectedAppleID.text" = "कनेक्टेड ऐप्पल आईडी";
+"SettingsView.ConnectedAppleID.signOut" = "प्रस्थान करें";
+"SettingsView.ConnectedAppleID.Footer.p1" = "आपके द्वारा SideStore के साथ इंस्टॉल किए गए ऐप्स पर हस्ताक्षर करने के लिए आपकी ऐप्पल आईडी आवश्यक है।";
+"SettingsView.ConnectedAppleID.Footer.p2" = "आपके क्रेडेंशियल्स केवल Apple के सर्वरों को भेजे जाते हैं और SideStore टीम द्वारा एक्सेस नहीं किए जा सकते हैं। एक बार सफलतापूर्वक लॉग इन करने के बाद, लॉगिन विवरण आपके डिवाइस पर सुरक्षित रूप से संग्रहीत हो जाते हैं।";
+
+"SettingsView.connectAppleID" = "अपनी ऐप्पल आईडी कनेक्ट करें";
+"SettingsView.backgroundRefresh" = "बैकग्राउंड रिफ्रेश";
+"SettingsView.addToSiri" = "सिरी में जोड़ें...";
+"SettingsView.refreshingApps" = "ताज़ा करने वाले ऐप्स";
+"SettingsView.switchToUIKit" = "यूआईकिट पर स्विच करें";
+"SettingsView.resetImageCache" = "छवि कैश रीसेट करें";
+"SettingsView.debug" = "डिबग";
+"SettingsView.swiftUIRedesign" = "स्विफ्टयूआई रिडिजाइन";
+"SettingsView.credits" = "क्रेडिट";
+"SettingsView.title" = "समायोजन";
+"SettingsView.refreshingAppsFooter" = "वाई-फाई से कनेक्ट होने और वायरगार्ड सक्रिय होने पर बैकग्राउंड में ऐप्स को स्वचालित रूप से रीफ्रेश करने के लिए बैकग्राउंड रिफ्रेश सक्षम करें।";
+
+/* ConnectAppleIDView */
+"ConnectAppleIDView.startWithSignIn" = "आरंभ करने के लिए अपने Apple ID से साइन इन करें।";
+"ConnectAppleIDView.signIn" = "साइन इन करें";
+"ConnectAppleIDView.appleID" = "ऐप्पल आईडी";
+"ConnectAppleIDView.password" = "कुंजिका";
+"ConnectAppleIDView.whyDoWeNeedThis" = "हमें इसकी ज़रूरत क्यों है?";
+"ConnectAppleIDView.footer" = "आपकी Apple ID का उपयोग ऐप्स को कॉन्फ़िगर करने के लिए किया जाता है ताकि उन्हें इस डिवाइस पर इंस्टॉल किया जा सके। आपके क्रेडेंशियल इस डिवाइस के कीचेन में सुरक्षित रूप से स्टोर किए जाएंगे और प्रमाणीकरण के लिए केवल Apple को भेजे जाएंगे।";
+"ConnectAppleIDView.connectYourAppleID" = "अपनी ऐप्पल आईडी कनेक्ट करें";
+"ConnectAppleIDView.cancel" = "रद्द करना";
+"ConnectAppleIDView.failedToSignIn" = "साइन इन करने में विफल";
+
+/* SourcesView */
+"SourcesView.sourcesDescription" = "स्रोत नियंत्रित करते हैं कि कौन से ऐप्स SideStore के माध्यम से डाउनलोड करने के लिए उपलब्ध हैं।";
+"SourcesView.remove" = "हटाना";
+"SourcesView.trustedSources" = "विश्वसनीय स्रोत";
+"SourcesView.reviewedText" = "SideStore ने यह सुनिश्चित करने के लिए इन स्रोतों की समीक्षा की है कि वे हमारे सुरक्षा मानकों को पूरा करते हैं।";
+"SourcesView.sources" = "सूत्रों का कहना है";
+"SourcesView.done" = "पूर्ण";
+
+/* AddSourceView */
+"AddSourceView.sourceURL" = "स्रोत यूआरएल";
+"AddSourceView.sourceWarning" = "कृपया यहां स्रोत url दर्ज करें। फिर, अगले चरण में स्रोत को सत्यापित करने और जोड़ने के लिए जारी रखें पर टैप करें।";
+"AddSourceView.sourceWarningContinued" = "अमान्य तृतीय पक्ष स्रोतों से सावधान रहें! केवल उन स्रोतों को जोड़ना सुनिश्चित करें जिन पर आप भरोसा करते हैं।";
+"AddSourceView.continue" = "जारी रखना";
+"AddSourceView.title" = "स्रोत जोड़ें";
+
+/* ConfirmAddSourceView */
+"ConfirmAddSourceView.apps" = "ऐप्स";
+"ConfirmAddSourceView.newsItems" = "समाचार आइटम";
+"ConfirmAddSourceView.sourceContents" = "स्रोत सामग्री";
+"ConfirmAddSourceView.sourceIdentifier" = "स्रोत पहचानकर्ता";
+"ConfirmAddSourceView.sourceURL" = "स्रोत यूआरएल";
+"ConfirmAddSourceView.sourceInfo" = "स्रोत की जानकारी";
+"ConfirmAddSourceView.addSource" = "स्रोत जोड़ें";
+
+/* AppPillButton */
+"AppPillButton.free" = "नि शुल्क";
+"AppPillButton.open" = "खुला";
+
+/* AppAction */
+"AppAction.install" = "स्थापित करना";
+"AppAction.open" = "खुला";
+"AppAction.refresh" = "ताज़ा करना";
+"AppAction.activate" = "सक्रिय";
+"AppAction.deactivate" = "निष्क्रिय करें";
+"AppAction.remove" = "हटाना";
+"AppAction.enableJIT" = "सक्रिय JIT";
+"AppAction.backup" = "बैकअप";
+"AppAction.exportBackup" = "बैकअप निर्यात करें";
+"AppAction.restoreBackup" = "बैकअप बहाल";
+"AppAction.chooseCustomIcon" = "आइकन अनुकूलित करें";
+"AppAction.resetIcon" = "रीसेट आइकन";
+
+/* AppDetailView*/
+"AppDetailView.more" = "अधिक...";
+"AppDetailView.whatsNew" = "नया क्या है";
+"AppDetailView.version" = "संस्करण";
+"AppDetailView.noVersionInformation" = "कोई संस्करण जानकारी नहीं";
+"AppDetailView.noPermissions" = "ऐप को किसी अनुमति की आवश्यकता नहीं है।";
+"AppDetailView.permissions" = "अनुमतियां";
+
+/* AppPermissionGrid */
+"AppPermissionGrid.usageDescription" = "उपयोग विवरण";
+
+/* MyAppsView */
+"MyAppsView.active" = "सक्रिय";
+"MyAppsView.sideloading" = "साइडलोडिंग प्रगति पर है...";
+"MyAppsView.refreshAll" = "सभी को रीफ्रेश करें";
+"MyAppsView.remainingAppID" = "शेष ऐप आईडी";
+"MyAppsView.appIDsRemaining" = "ऐप आईडी शेष";
+"MyAppsView.noUpdatesAvailable" = "कोई अपडेट उपलब्ध नहीं";
+"MyAppsView.failedToRefresh" = "रीफ़्रेश करने में विफल";
+"MyAppsView.apps" = "ऐप्स"; /* Keep this lowercase */
+"MyAppsView.viewAppIDs" = "ऐप आईडी देखें";
+"MyAppsView.myApps" = "मेरी एप्प्स";

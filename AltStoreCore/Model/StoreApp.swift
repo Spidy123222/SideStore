@@ -342,24 +342,30 @@ public extension StoreApp
     class func makeAltStoreApp(in context: NSManagedObjectContext) -> StoreApp
     {
         let app = StoreApp(context: context)
+        app.source = Source.makeAltStoreSource(in: context)
         app.name = "SideStore"
         app.bundleIdentifier = StoreApp.altstoreAppID
         app.developerName = "Side Team"
         app.localizedDescription = "SideStore is an alternative App Store."
-        app.iconURL = URL(string: "https://user-images.githubusercontent.com/705880/63392210-540c5980-c37b-11e9-968c-8742fc68ab2e.png")!
-        app.screenshotURLs = []
-        app.sourceIdentifier = Source.altStoreIdentifier
+        app.iconURL = URL(string: "https://apps.sidestore.io/apps/sidestore/v0.1.1/icon.png")!
+        app.screenshotURLs = [
+            URL(string: "https://apps.sidestore.io/apps/sidestore/v0.1.1/browse-dark.png")!,
+            URL(string: "https://apps.sidestore.io/apps/sidestore/v0.1.1/apps-dark.png")!,
+            URL(string: "https://apps.sidestore.io/apps/sidestore/v0.1.1/news-dark.png")!,
+            URL(string: "https://apps.sidestore.io/apps/sidestore/v0.1.1/browse-light.png")!,
+            URL(string: "https://apps.sidestore.io/apps/sidestore/v0.1.1/apps-light.png")!,
+            URL(string: "https://apps.sidestore.io/apps/sidestore/v0.1.1/news-light.png")!,
+        ]
+        app.tintColor = UIColor(named: "AccentColor")
         
-        let appVersion = AppVersion.makeAppVersion(version: "0.3.0",
+        let appVersion = AppVersion.makeAppVersion(version: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown",
                                                    date: Date(),
-                                                   downloadURL: URL(string: "http://rileytestut.com")!,
+                                                   downloadURL: URL(string: "https://github.com/SideStore/SideStore/releases/download/0.1.1/SideStore.ipa")!,
                                                    size: 0,
                                                    appBundleID: app.bundleIdentifier,
                                                    sourceID: Source.altStoreIdentifier,
                                                    in: context)
         app.setVersions([appVersion])
-        
-        print("makeAltStoreApp StoreApp: \(String(describing: app))")
         
         #if BETA
         app.isBeta = true

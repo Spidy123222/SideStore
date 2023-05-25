@@ -1,0 +1,128 @@
+/* 
+  Localizable.strings
+  AltStore
+
+  Created by Fabian Thies on 22.12.22.
+
+  Modified by mindfreakdev on 25.12.22
+  
+  Copyright © 2022 SideStore. All rights reserved.
+*/
+
+
+/* NewsView */
+"NewsView.title" = "Новини";
+"NewsView.Section.FromSources.title" = "З ваших джерел";
+
+
+/* BrowseView */
+"BrowseView.title" = "переглядати";
+"BrowseView.search" = "Пошук";
+"BrowseView.Section.PromotedCategories.title" = "Розширені категорії";
+"BrowseView.Section.PromotedCategories.showAll" = "Показати все";
+"BrowseView.Section.AllApps.title" = "Усі додатки";
+"BrowseView.Actions.sources" = "Джерела";
+"BrowseView.Categories.gamesAndEmulators" = "Ігри та\nемулятори";
+
+/* RootView */
+"RootView.news" = "Новини";
+"RootView.browse" = "переглядати";
+"RootView.myApps" = "Мої програми";
+"RootView.settings" = "Налаштування";
+
+/* SettingsView */
+"SettingsView.ConnectedAppleID.name" = "Ім'я";
+"SettingsView.ConnectedAppleID.eMail" = "Електронна пошта";
+"SettingsView.ConnectedAppleID.type" = "Тип";
+"SettingsView.ConnectedAppleID.text" = "Підключений Apple ID";
+"SettingsView.ConnectedAppleID.signOut" = "Вийти з аккаунта";
+"SettingsView.ConnectedAppleID.Footer.p1" = "Ваш Apple ID потрібен для підпису програм, які ви встановлюєте за допомогою SideStore.";
+"SettingsView.ConnectedAppleID.Footer.p2" = "Ваші облікові дані надсилаються лише на сервери Apple і недоступні для команди SideStore. Після успішного входу дані для входу надійно зберігаються на вашому пристрої.";
+
+"SettingsView.connectAppleID" = "Підключіть свій Apple ID";
+"SettingsView.backgroundRefresh" = "Фонове оновлення";
+"SettingsView.addToSiri" = "Додати до Siri...";
+"SettingsView.refreshingApps" = "Оновлення програм";
+"SettingsView.switchToUIKit" = "Перейдіть на UIKit";
+"SettingsView.resetImageCache" = "Скинути кеш зображень";
+"SettingsView.debug" = "Відлагоджувати";
+"SettingsView.swiftUIRedesign" = "Редизайн SwiftUI";
+"SettingsView.credits" = "Кредити";
+"SettingsView.title" = "Налаштування";
+"SettingsView.refreshingAppsFooter" = "Увімкніть Background Refresh, щоб автоматично оновлювати програми у фоновому режимі при підключенні до Wi-Fi і Wireguard.";
+
+/* ConnectAppleIDView */
+"ConnectAppleIDView.startWithSignIn" = "Щоб почати, увійдіть за допомогою свого Apple ID.";
+"ConnectAppleIDView.signIn" = "Увійти";
+"ConnectAppleIDView.appleID" = "Apple ID";
+"ConnectAppleIDView.password" = "Пароль";
+"ConnectAppleIDView.whyDoWeNeedThis" = "Навіщо нам це?";
+"ConnectAppleIDView.footer" = "Ваш Apple ID використовується для налаштування додатків, щоб їх можна було встановити на цьому пристрої. Ваші облікові дані будуть безпечно зберігатися в Keychain цього пристрою та надсилатися лише в Apple для автентифікації.";
+"ConnectAppleIDView.connectYourAppleID" = "Підключіть свій Apple ID";
+"ConnectAppleIDView.cancel" = "Скасувати";
+"ConnectAppleIDView.failedToSignIn" = "Не вдалося ввійти";
+
+/* SourcesView */
+"SourcesView.sourcesDescription" = "Джерела контролюють, які програми доступні для завантаження через SideStore.";
+"SourcesView.remove" = "видалити";
+"SourcesView.trustedSources" = "Надійні джерела";
+"SourcesView.reviewedText" = "SideStore перевірив ці джерела, щоб переконатися, що вони відповідають нашим стандартам безпеки.";
+"SourcesView.sources" = "Джерела";
+"SourcesView.done" = "Готово";
+
+/* AddSourceView */
+"AddSourceView.sourceURL" = "Вихідна URL-адреса";
+"AddSourceView.sourceWarning" = "Введіть URL-адресу джерела тут. Потім натисніть «Продовжити», щоб перевірити та додати джерело на наступному кроці.";
+"AddSourceView.sourceWarningContinued" = "Будьте обережні з неперевіреними сторонніми джерелами! Додавайте лише ті джерела, яким довіряєте.";
+"AddSourceView.continue" = "Продовжити";
+"AddSourceView.title" = "Додати джерело";
+
+/* ConfirmAddSourceView */
+"ConfirmAddSourceView.apps" = "програми";
+"ConfirmAddSourceView.newsItems" = "Новини";
+"ConfirmAddSourceView.sourceContents" = "Зміст джерела";
+"ConfirmAddSourceView.sourceIdentifier" = "Ідентифікатор джерела";
+"ConfirmAddSourceView.sourceURL" = "Вихідна URL-адреса";
+"ConfirmAddSourceView.sourceInfo" = "Вихідна інформація";
+"ConfirmAddSourceView.addSource" = "Додати джерело";
+
+/* AppPillButton */
+"AppPillButton.free" = "безкоштовно";
+"AppPillButton.open" = "ВІДЧИНЕНО";
+
+/* AppAction */
+"AppAction.install" = "встановити";
+"AppAction.open" = "ВІДЧИНЕНО";
+"AppAction.refresh" = "Оновити";
+"AppAction.activate" = "активувати";
+"AppAction.deactivate" = "Дезактивувати";
+"AppAction.remove" = "видалити";
+"AppAction.enableJIT" = "Активуйте JIT";
+"AppAction.backup" = "Резервне копіювання";
+"AppAction.exportBackup" = "Експорт резервної копії";
+"AppAction.restoreBackup" = "Відновлення резервної копії";
+"AppAction.chooseCustomIcon" = "Налаштувати значок";
+"AppAction.resetIcon" = "Значок скидання";
+
+/* AppDetailView*/
+"AppDetailView.more" = "більше...";
+"AppDetailView.whatsNew" = "Що нового";
+"AppDetailView.version" = "Версія";
+"AppDetailView.noVersionInformation" = "Немає інформації про версію";
+"AppDetailView.noPermissions" = "Програма не потребує дозволів.";
+"AppDetailView.permissions" = "Дозволи";
+
+/* AppPermissionGrid */
+"AppPermissionGrid.usageDescription" = "Опис використання";
+
+/* MyAppsView */
+"MyAppsView.active" = "Активний";
+"MyAppsView.sideloading" = "Виконується стороннє завантаження...";
+"MyAppsView.refreshAll" = "Оновити все";
+"MyAppsView.remainingAppID" = "Решта ідентифікаторів програм";
+"MyAppsView.appIDsRemaining" = "Залишилося ідентифікаторів програм";
+"MyAppsView.noUpdatesAvailable" = "Немає оновлень";
+"MyAppsView.failedToRefresh" = "Не вдалося оновити";
+"MyAppsView.apps" = "програми"; /* Keep this lowercase */
+"MyAppsView.viewAppIDs" = "Перегляньте ідентифікатори програм";
+"MyAppsView.myApps" = "Мої програми";

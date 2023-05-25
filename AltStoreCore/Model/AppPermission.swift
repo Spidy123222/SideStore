@@ -7,6 +7,7 @@
 //
 
 import CoreData
+import SFSafeSymbols
 import UIKit
 
 public extension ALTAppPermissionType
@@ -46,28 +47,51 @@ public extension ALTAppPermissionType
     }
     
     var icon: UIImage? {
-        switch self
-        {
-        case .photos: return UIImage(systemName: "photo.on.rectangle.angled")
-        case .camera: return UIImage(systemName: "camera.fill")
-        case .location: return UIImage(systemName: "location.fill")
-        case .contacts: return UIImage(systemName: "person.2.fill")
-        case .reminders: return UIImage(systemName: "checklist")
-        case .appleMusic: return UIImage(systemName: "music.note")
-        case .microphone: return UIImage(systemName: "mic.fill")
-        case .speechRecognition: return UIImage(systemName: "waveform.and.mic")
-        case .backgroundAudio: return UIImage(systemName: "speaker.fill")
-        case .backgroundFetch: return UIImage(systemName: "square.and.arrow.down")
-        case .bluetooth: return UIImage(systemName: "wave.3.right")
-        case .network: return UIImage(systemName: "network")
-        case .calendars: return UIImage(systemName: "calendar")
-        case .touchID: return UIImage(systemName: "touchid")
-        case .faceID: return UIImage(systemName: "faceid")
-        case .siri: return UIImage(systemName: "mic.and.signal.meter.fill")
-        case .motion: return UIImage(systemName: "figure.walk.motion")
-        default:
+        let symbol: SFSymbol? = {
+            switch self {
+            case .photos: return .photoOnRectangleAngled
+            case .camera: return .cameraFill
+            case .location: return .locationFill
+            case .contacts: return .person2Fill
+            case .reminders:
+                if #available(iOS 15.0, *) {
+                    return .checklist
+                }
+                return .listBullet
+            case .appleMusic: return .musicNote
+            case .microphone: return .micFill
+            case .speechRecognition:
+                if #available(iOS 15.0, *) {
+                    return .waveformAndMic
+                }
+                return .recordingtape
+            case .backgroundAudio: return .speakerFill
+            case .backgroundFetch: return .squareAndArrowDown
+            case .bluetooth: return .wave3Right
+            case .network: return .network
+            case .calendars: return .calendar
+            case .touchID: return .touchid
+            case .faceID: return .faceid
+            case .siri:
+                if #available(iOS 16.0, *) {
+                    return .micAndSignalMeterFill
+                }
+                return .waveform
+            case .motion:
+                if #available(iOS 16.0, *) {
+                    return .figureWalkMotion
+                }
+                return .figureWalk
+            default:
+                return nil
+            }
+        }()
+        
+        guard let symbol = symbol else {
             return nil
         }
+        
+        return UIImage(systemSymbol: symbol)
     }
 }
 

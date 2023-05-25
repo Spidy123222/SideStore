@@ -1,0 +1,23 @@
+# colors:
+#   inputs: colors.xml
+#   outputs:
+#     templateName: swift5
+#     output: Colors.swift
+#
+# fonts:
+#   inputs: Fonts
+#   outputs:
+#     templateName: swift5
+#     output: Fonts.swift
+
+strings:
+  - inputs: AltStore/Resources/en.lproj/Localizable.strings
+    outputs:
+      templateName: structured-swift5
+      output: AltStore/SwiftUI/Generated/Localizations.swift
+
+xcassets:
+  inputs: AltStore/Resources/Assets.xcassets
+  outputs:
+    templateName: swift5
+    output: AltStore/SwiftUI/Generated/Assets.swift

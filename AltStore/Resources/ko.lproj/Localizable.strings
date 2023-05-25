@@ -1,0 +1,117 @@
+
+
+"AppAction.enableJIT" = "JIT 사용";
+"AppAction.backup" = "백업";
+
+
+/* BrowseView */
+"BrowseView.title" = "탐럼하기";
+"BrowseView.search" = "검색";
+"BrowseView.Section.PromotedCategories.title" = "추천된 앱 종류";
+"BrowseView.Section.PromotedCategories.showAll" = "모두 보기";
+"BrowseView.Section.AllApps.title" = "모두 보기";
+"BrowseView.Actions.sources" = "소스";
+"BrowseView.Categories.gamesAndEmulators" = "게임과\n에뮬레이터";
+
+/* RootView */
+"RootView.news" = "뉴즈";
+"RootView.browse" = "탐험하기";
+"RootView.myApps" = "설치된 앱";
+"RootView.settings" = "설정";
+"SettingsView.ConnectedAppleID.eMail" = "현재 연동된 Apple ID의 이매일";
+"SettingsView.ConnectedAppleID.type" = "종류";
+"SettingsView.ConnectedAppleID.text" = "현재 연동된 Apple ID";
+"SettingsView.ConnectedAppleID.signOut" = "Apple ID에서 로그아웃하기";
+"ConfirmAddSourceView.addSource" = "소스추가";
+
+/* AppPillButton */
+"AppPillButton.free" = "무료";
+
+/* AppAction */
+"AppAction.install" = "설치";
+"AppAction.open" = "열기";
+"AppPillButton.open" = "열기";
+"AppAction.refresh" = "재검색";
+"AppAction.activate" = "활성화";
+"AppAction.deactivate" = "비활성화";
+"AppAction.remove" = "지우기";
+"ConnectAppleIDView.appleID" = "Apple ID 이메일";
+"SettingsView.connectAppleID" = "Apple ID와 연동하기";
+"SettingsView.backgroundRefresh" = "백그라운드 사인";
+"SettingsView.refreshingApps" = "앱 다시 사인 하는중";
+"SettingsView.addToSiri" = "시리에 추가하기...";
+"SettingsView.switchToUIKit" = "UIkit을 사용하기";
+"SettingsView.resetImageCache" = "사진 다시 연동하기";
+"SettingsView.debug" = "디버그";
+"SettingsView.swiftUIRedesign" = "SwiftUI 리디다인";
+"SettingsView.credits" = "크래딧";
+"SettingsView.title" = "설정";
+"ConnectAppleIDView.signIn" = "로그인";
+"ConnectAppleIDView.password" = "비밀번호";
+"ConnectAppleIDView.whyDoWeNeedThis" = "정보수집을 왜하지?";
+"ConnectAppleIDView.connectYourAppleID" = "Apple ID 연동하기";
+"ConnectAppleIDView.cancel" = "취소";
+"ConnectAppleIDView.failedToSignIn" = "로그인 실패";
+"SourcesView.remove" = "삭제";
+
+/* SourcesView */
+"SourcesView.sourcesDescription" = "소스는 SideStore에서 설치 가능한 앱을 설정합니다.";
+"SourcesView.trustedSources" = "검증소스";
+"SourcesView.reviewedText" = "이 소스는 SideStore에서 점검해 안전한 앱이 있습니다.";
+"SourcesView.sources" = "소스";
+"SourcesView.done" = "완료";
+
+/* AddSourceView */
+"AddSourceView.sourceURL" = "소스 URL";
+"AddSourceView.sourceWarningContinued" = "미검증 소스를 함부로 추가하지 마세요.";
+"AddSourceView.sourceWarning" = "소스 URL을 입력하고, 작동 검증한 뒤 추가해주세요.";
+"AddSourceView.continue" = "추가";
+"AddSourceView.title" = "소스 추고";
+
+/* ConfirmAddSourceView */
+"ConfirmAddSourceView.apps" = "앱";
+"ConfirmAddSourceView.newsItems" = "뉴스";
+"ConfirmAddSourceView.sourceContents" = "소스 내용물";
+"ConfirmAddSourceView.sourceIdentifier" = "소스 식별";
+"ConfirmAddSourceView.sourceURL" = "소스 URL";
+"ConfirmAddSourceView.sourceInfo" = "소스 정보";
+
+/* NewsView */
+"NewsView.title" = "뉴스";
+"NewsView.Section.FromSources.title" = "소스에서";
+
+/* SettingsView */
+"SettingsView.ConnectedAppleID.name" = "현재 연동된 Apple ID의 이름";
+"SettingsView.ConnectedAppleID.Footer.p1" = "이 앱을 사용하려면, Apple ID에 로그인을 해서 앱을 인증을 할 수 있습니다.";
+"AppAction.exportBackup" = "백업 내보내기";
+"ConnectAppleIDView.footer" = "당신의 Apple ID는 앱을 설정하여 기기에 설치가 가능하게 합니다. 당신의 개인정보는 디바이스의 Keychain에만 저장되며 애플외 전송되지 않습니다.";
+"SettingsView.ConnectedAppleID.Footer.p2" = "당신의 개인정보는 애플 외에는 전송되지 않으며, 로그인이 완료된 후에 보안이 강하게 저장됨니다.";
+"AppAction.restoreBackup" = "백업 받기";
+"AppAction.chooseCustomIcon" = "아이콘 바꾸기";
+"SettingsView.refreshingAppsFooter" = "백그라운드 앱 샤로고침 키면 와이파이와 Wireguard가켜진상태에 앱을 라프래쉬합니다.";
+"AppAction.resetIcon" = "유저 아이콘 삭재";
+
+/* ConnectAppleIDView */
+"ConnectAppleIDView.startWithSignIn" = "Apple ID에 로그인을 하여 시작합시다.";
+"AppDetailView.whatsNew" = "무엇이 새로운가";
+"AppDetailView.version" = "버전";
+"AppDetailView.noVersionInformation" = "버전정보 없움";
+"AppDetailView.noPermissions" = "앱은 추가 기능이 필요 없다.";
+"AppDetailView.permissions" = "추가 기능";
+
+/* AppPermissionGrid */
+"AppPermissionGrid.usageDescription" = "사용량";
+
+/* MyAppsView */
+"MyAppsView.active" = "활성화";
+"MyAppsView.noUpdatesAvailable" = "업데이트 없움";
+"MyAppsView.failedToRefresh" = "업대이트 실패";
+
+/* AppDetailView*/
+"AppDetailView.more" = "더 보기...";
+"MyAppsView.refreshAll" = "모두 다시 검색";
+"MyAppsView.appIDsRemaining" = "사용 가능한 App ID 개수";
+"MyAppsView.apps" = "apps"; /* Keep this lowercase */
+"MyAppsView.viewAppIDs" = "사용한 App ID보기";
+"MyAppsView.myApps" = "나의 앱";
+"MyAppsView.sideloading" = "설치 중...";

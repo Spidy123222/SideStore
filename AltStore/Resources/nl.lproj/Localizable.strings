@@ -1,0 +1,128 @@
+/* 
+  Localizable.strings
+  AltStore
+
+  Created by Fabian Thies on 22.12.22.
+
+  Modified by mindfreakdev on 25.12.22
+
+  Copyright © 2022 SideStore. All rights reserved.
+*/
+
+
+/* NewsView */
+"NewsView.title" = "Nieuws";
+"NewsView.Section.FromSources.title" = "Van je bronnen";
+
+
+/* BrowseView */
+"BrowseView.title" = "Bladeren";
+"BrowseView.search" = "Zoekopdracht";
+"BrowseView.Section.PromotedCategories.title" = "Gepromoveerde categorieën";
+"BrowseView.Section.PromotedCategories.showAll" = "Toon alles";
+"BrowseView.Section.AllApps.title" = "Alle Apps";
+"BrowseView.Actions.sources" = "Bronnen";
+"BrowseView.Categories.gamesAndEmulators" = "Spellen en\nEmulators";
+
+/* RootView */
+"RootView.news" = "Nieuws";
+"RootView.browse" = "Bladeren";
+"RootView.myApps" = "Mijn apps";
+"RootView.settings" = "Instellingen";
+
+/* SettingsView */
+"SettingsView.ConnectedAppleID.name" = "Naam";
+"SettingsView.ConnectedAppleID.eMail" = "E-mailen";
+"SettingsView.ConnectedAppleID.type" = "Type";
+"SettingsView.ConnectedAppleID.text" = "Verbonden Apple ID";
+"SettingsView.ConnectedAppleID.signOut" = "Afmelden";
+"SettingsView.ConnectedAppleID.Footer.p1" = "Uw Apple ID is vereist om de apps te ondertekenen die u met SideStore installeert.";
+"SettingsView.ConnectedAppleID.Footer.p2" = "Uw inloggegevens worden alleen naar de servers van Apple verzonden en zijn niet toegankelijk voor het SideStore-team. Nadat u succesvol bent ingelogd, worden de inloggegevens veilig op uw apparaat opgeslagen.";
+
+"SettingsView.connectAppleID" = "Koppel uw Apple ID";
+"SettingsView.backgroundRefresh" = "Achtergrond Vernieuwen";
+"SettingsView.addToSiri" = "Toevoegen aan Siri...";
+"SettingsView.refreshingApps" = "Verfrissende Apps";
+"SettingsView.switchToUIKit" = "Schakel over naar UIKit";
+"SettingsView.resetImageCache" = "Stel De Afbeeldingscache Opnieuw In";
+"SettingsView.debug" = "Debuggen";
+"SettingsView.swiftUIRedesign" = "SwiftUI Herontwerp";
+"SettingsView.credits" = "Credits";
+"SettingsView.title" = "Instellingen";
+"SettingsView.refreshingAppsFooter" = "Schakel Achtergrondvernieuwing in om apps op de achtergrond automatisch te vernieuwen wanneer ze verbonden zijn met wifi en Wireguard actief is.";
+
+/* ConnectAppleIDView */
+"ConnectAppleIDView.startWithSignIn" = "Aanmelden met uw Apple ID om aan de slag te gaan.";
+"ConnectAppleIDView.signIn" = "Aanmelden";
+"ConnectAppleIDView.appleID" = "Apple ID";
+"ConnectAppleIDView.password" = "Wachtwoord";
+"ConnectAppleIDView.whyDoWeNeedThis" = "Waarom hebben we dit nodig?";
+"ConnectAppleIDView.footer" = "Uw Apple ID wordt gebruikt om apps te configureren zodat ze op dit apparaat kunnen worden geïnstalleerd. Uw inloggegevens worden veilig opgeslagen in de sleutelhanger van dit apparaat en alleen naar Apple verzonden voor authenticatie.";
+"ConnectAppleIDView.connectYourAppleID" = "Verbind uw Apple ID";
+"ConnectAppleIDView.cancel" = "Annuleren";
+"ConnectAppleIDView.failedToSignIn" = "Aanmelden mislukt";
+
+/* SourcesView */
+"SourcesView.sourcesDescription" = "Bronnen bepalen welke apps beschikbaar zijn om te downloaden via SideStore.";
+"SourcesView.remove" = "Verwijderen";
+"SourcesView.trustedSources" = "Vertrouwde Bronnen";
+"SourcesView.reviewedText" = "SideStore heeft deze bronnen beoordeeld om er zeker van te zijn dat ze voldoen aan onze veiligheidsnormen.";
+"SourcesView.sources" = "Bronnen";
+"SourcesView.done" = "Gedaan";
+
+/* AddSourceView */
+"AddSourceView.sourceURL" = "Bron URL";
+"AddSourceView.sourceWarning" = "Voer hier de bron-URL in. Tik vervolgens op doorgaan om te valideren en voeg de bron toe in de volgende stap.";
+"AddSourceView.sourceWarningContinued" = "Wees voorzichtig met niet-gevalideerde bronnen van derden! Zorg ervoor dat u alleen bronnen toevoegt die u vertrouwt.";
+"AddSourceView.continue" = "Doorgaan";
+"AddSourceView.title" = "Bron Toevoegen";
+
+/* ConfirmAddSourceView */
+"ConfirmAddSourceView.apps" = "Apps";
+"ConfirmAddSourceView.newsItems" = "Nieuwsberichten";
+"ConfirmAddSourceView.sourceContents" = "Bron Inhoud";
+"ConfirmAddSourceView.sourceIdentifier" = "Bron Identificatie";
+"ConfirmAddSourceView.sourceURL" = "Bron URL";
+"ConfirmAddSourceView.sourceInfo" = "Bron Informatie";
+"ConfirmAddSourceView.addSource" = "Bron Toevoegen";
+
+/* AppPillButton */
+"AppPillButton.free" = "Vrij";
+"AppPillButton.open" = "Open";
+
+/* AppAction */
+"AppAction.install" = "Installeren";
+"AppAction.open" = "Open";
+"AppAction.refresh" = "Vernieuwen";
+"AppAction.activate" = "Activeren";
+"AppAction.deactivate" = "Deactiveren";
+"AppAction.remove" = "Verwijderen";
+"AppAction.enableJIT" = "Activeer JIT";
+"AppAction.backup" = "Backup";
+"AppAction.exportBackup" = "Backup exporteren";
+"AppAction.restoreBackup" = "Backup terugzetten";
+"AppAction.chooseCustomIcon" = "Pictogram aanpassen";
+"AppAction.resetIcon" = "Pictogram resetten";
+
+/* AppDetailView*/
+"AppDetailView.more" = "Meer...";
+"AppDetailView.whatsNew" = "Wat Is Er Nieuw";
+"AppDetailView.version" = "Versie";
+"AppDetailView.noVersionInformation" = "Geen versie informatie";
+"AppDetailView.noPermissions" = "De app vereist geen machtigingen.";
+"AppDetailView.permissions" = "Rechten";
+
+/* AppPermissionGrid */
+"AppPermissionGrid.usageDescription" = "Gebruik Beschrijving";
+
+/* MyAppsView */
+"MyAppsView.active" = "Actief";
+"MyAppsView.sideloading" = "Bezig met sideloaden...";
+"MyAppsView.refreshAll" = "Ververs Alles";
+"MyAppsView.remainingAppID" = "Resterende App IDs";
+"MyAppsView.appIDsRemaining" = "App IDs Resterende";
+"MyAppsView.noUpdatesAvailable" = "Geen Updates Beschikbaar";
+"MyAppsView.failedToRefresh" = "Kan niet vernieuwen";
+"MyAppsView.apps" = "apps"; /* Keep this lowercase */
+"MyAppsView.viewAppIDs" = "App IDs Bekijken";
+"MyAppsView.myApps" = "Mijn Apps";

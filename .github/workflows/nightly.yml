@@ -36,6 +36,9 @@ jobs:
       - name: Increase nightly build number and set as version
         run: bash .github/workflows/increase-nightly-build-num.sh
 
+      - name: Change default icon to nightly icon
+        run: sed -e 's/= Neon/= Steel/' -i '' ./AltStore.xcodeproj/project.pbxproj
+
       - name: Get version
         id: version
         run: echo "version=$(grep MARKETING_VERSION Build.xcconfig | sed -e "s/MARKETING_VERSION = //g")" >> $GITHUB_OUTPUT

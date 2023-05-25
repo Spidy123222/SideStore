@@ -8,6 +8,8 @@
 
 import Foundation
 import Roxas
+import SwiftUI
+import ZIPFoundation
 
 import AltStoreCore
 import AltSign
@@ -15,6 +17,9 @@ import AltSign
 @objc(ResignAppOperation)
 final class ResignAppOperation: ResultOperation<ALTApplication>
 {
+    static var skipResign: Bool = false
+    static var skipResignBinding: Binding<Bool> { Binding<Bool>(get: { skipResign }, set: { skipResign = $0 }) }
+    
     let context: InstallAppOperationContext
     
     init(context: InstallAppOperationContext)
@@ -49,6 +54,23 @@ final class ResignAppOperation: ResultOperation<ALTApplication>
         
         let prepareAppBundleProgress = self.prepareAppBundle(for: app, profiles: profiles) { (result) in
             guard let appBundleURL = self.process(result) else { return }
+            
+            if ResignAppOperation.skipResign {
+                print("⚠️ WARNING: Skipping resign. Unless you correctly resigned the IPA before installing it, things will not work! Also, this might crash SideStore. You have been warned!")
+                let ipaFile = self.context.temporaryDirectory.appendingPathComponent("App.ipa")
+                let archive = Archive(url: ipaFile, accessMode: .create)!
+                for case let fileURL as URL in FileManager.default.enumerator(at: appBundleURL, includingPropertiesForKeys: [])! {
+                    let relative = fileURL.description.replacingOccurrences(of: appBundleURL.description, with: "").removingPercentEncoding!
+                    try! archive.addEntry(with: "Payload/App.app\(relative)", fileURL: fileURL)
+                }
+                let destinationURL = InstalledApp.refreshedIPAURL(for: app)
+                try! FileManager.default.copyItem(at: ipaFile, to: destinationURL, shouldReplace: true)
+                
+                // Use appBundleURL since we need an app bundle, not .ipa.
+                let resignedApplication = ALTApplication(fileURL: appBundleURL)!
+                self.finish(.success(resignedApplication))
+                return
+            }
             
             print("Resigning App:", self.context.bundleIdentifier)
             

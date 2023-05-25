@@ -9,6 +9,7 @@
 import UIKit
 import AltStoreCore
 import EmotionalDamage
+import minimuxer
 
 @available(iOS 13, *)
 final class SceneDelegate: UIResponder, UIWindowSceneDelegate
@@ -92,6 +93,7 @@ private extension SceneDelegate
         {
             guard let components = URLComponents(url: context.url, resolvingAgainstBaseURL: false) else { return }
             guard let host = components.host?.lowercased() else { return }
+            let queryItems = components.queryItems?.reduce(into: [String: String]()) { $0[$1.name.lowercased()] = $1.value } ?? [:]
             
             switch host
             {
@@ -107,7 +109,6 @@ private extension SceneDelegate
                 {
                 case "/success": result = .success(())
                 case "/failure":
-                    let queryItems = components.queryItems?.reduce(into: [String: String]()) { $0[$1.name] = $1.value } ?? [:]
                     guard
                         let errorDomain = queryItems["errorDomain"],
                         let errorCodeString = queryItems["errorCode"], let errorCode = Int(errorCodeString),
@@ -125,7 +126,6 @@ private extension SceneDelegate
                 }
                 
             case "install":
-                let queryItems = components.queryItems?.reduce(into: [String: String]()) { $0[$1.name.lowercased()] = $1.value } ?? [:]
                 guard let downloadURLString = queryItems["url"], let downloadURL = URL(string: downloadURLString) else { return }
                 
                 DispatchQueue.main.async {
@@ -133,12 +133,33 @@ private extension SceneDelegate
                 }
             
             case "source":
-                let queryItems = components.queryItems?.reduce(into: [String: String]()) { $0[$1.name.lowercased()] = $1.value } ?? [:]
                 guard let sourceURLString = queryItems["url"], let sourceURL = URL(string: sourceURLString) else { return }
                 
                 DispatchQueue.main.async {
                     NotificationCenter.default.post(name: AppDelegate.addSourceDeepLinkNotification, object: nil, userInfo: [AppDelegate.addSourceDeepLinkURLKey: sourceURL])
                 }
+                
+            case "sidejit-enable":
+                guard UnstableFeatures.enabled(.jitUrlScheme) else { return UIApplication.alertOk(title: "JIT URL scheme unstable feature is not enabled", message: nil) }
+                
+                if let bundleID = queryItems["bid"] {
+                    DispatchQueue.main.async {
+                        do {
+                            try debug_app(bundleID)
+                        } catch {
+                            UIApplication.alertOk(title: "An error occurred when enabling JIT", message: error.localizedDescription)
+                        }
+                    }
+                } else if let processID = queryItems["pid"] {
+                    DispatchQueue.main.async {
+                        do {
+                            guard let processID = UInt32(processID) else { return UIApplication.alertOk(title: "An error occurred when enabling JIT", message: "Process ID is not a valid unsigned integer") }
+                            try attach_debugger(processID)
+                        } catch {
+                            UIApplication.alertOk(title: "An error occurred when enabling JIT", message: error.localizedDescription)
+                        }
+                    }
+                } else { return UIApplication.alertOk(title: "An error occurred when enabling JIT", message: "Please specify a bundle ID using the `bid` query parameter or a process ID using `pid` query parameter") }
                 
             default: break
             }

@@ -1,0 +1,222 @@
+/* 
+  Localizable.strings
+  AltStore
+
+  Created by Fabian Thies on 22.12.22.
+  Copyright © 2022 SideStore. All rights reserved.
+*/
+
+
+/* General Actions */
+"Action.done" = "Done";
+"Action.close" = "Close";
+"Action.enable" = "Enable";
+"Action.submit" = "Submit";
+"Action.cancel" = "Cancel";
+"Action.tryAgain" = "Try Again";
+
+/* NewsView */
+"NewsView.title" = "News";
+"NewsView.Section.FromSources.title" = "From your Sources";
+
+/* BrowseView */
+"BrowseView.title" = "Browse";
+"BrowseView.search" = "Search";
+"BrowseView.Section.PromotedCategories.title" = "Promoted Categories";
+"BrowseView.Section.PromotedCategories.showAll" = "Show all";
+"BrowseView.Section.AllApps.title" = "All Apps";
+"BrowseView.Hints.NoApps.title" = "You don't have any apps yet.";
+"BrowseView.Hints.NoApps.text" = "Apps are provided by \"sources\". The specification for them is an open standard, so everyone can create their own source. To get you started, we have compiled a list of \"Trusted Sources\" which you can check out by tapping the button below.";
+"BrowseView.Hints.NoApps.addSource" = "Add Source";
+"BrowseView.Actions.sources" = "Sources";
+"BrowseView.Categories.gamesAndEmulators" = "Games and\nEmulators";
+
+/* AppRowView */
+"AppRowView.sideloaded" = "Sideloaded";
+
+/* AppPillButton */
+"AppPillButton.free" = "Free";
+"AppPillButton.open" = "Open";
+
+/* RootView */
+"RootView.news" = "News";
+"RootView.browse" = "Browse";
+"RootView.myApps" = "My Apps";
+"RootView.settings" = "Settings";
+
+/* SettingsView */
+"SettingsView.ConnectedAppleID.name" = "Name";
+"SettingsView.ConnectedAppleID.eMail" = "E-Mail";
+"SettingsView.ConnectedAppleID.type" = "Type";
+"SettingsView.ConnectedAppleID.text" = "Connected Apple ID";
+"SettingsView.ConnectedAppleID.signOut" = "Sign Out";
+"SettingsView.ConnectedAppleID.Footer.p1" = "Your Apple ID is required to sign the apps you install with SideStore.";
+"SettingsView.ConnectedAppleID.Footer.p2" = "Your credentials are only sent to Apple's servers and are not accessible by the SideStore Team. Once successfully logged in, the login details are stored securely on your device.";
+
+"SettingsView.connectAppleID" = "Connect your Apple ID";
+"SettingsView.backgroundRefresh" = "Background Refresh";
+"SettingsView.addToSiri" = "Add to Siri...";
+"SettingsView.refreshingApps" = "Refreshing Apps";
+"SettingsView.switchToUIKit" = "Switch to UIKit";
+"SettingsView.resetImageCache" = "Reset Image Cache";
+"SettingsView.debug" = "Debug";
+"SettingsView.swiftUIRedesign" = "SwiftUI Redesign";
+"SettingsView.credits" = "Credits";
+"SettingsView.title" = "Settings";
+"SettingsView.refreshingAppsFooter" = "Enable Background Refresh to automatically refresh apps in the background when connected to WiFi and with Wireguard active.";
+"SettingsView.exportLogs" = "Export Logs";
+"SettingsView.debugLogging" = "Debug Logging";
+
+/* ConnectAppleIDView */
+"ConnectAppleIDView.startWithSignIn" = "Sign in with your Apple ID to get started.";
+"ConnectAppleIDView.signIn" = "Sign In";
+"ConnectAppleIDView.appleID" = "Apple ID";
+"ConnectAppleIDView.password" = "Password";
+"ConnectAppleIDView.whyDoWeNeedThis" = "Why do we need this?";
+"ConnectAppleIDView.footer" = "Your Apple ID is used to configure apps so they can be installed on this device. Your credentials will be stored securely in this device's Keychain and sent only to Apple for authentication.";
+"ConnectAppleIDView.connectYourAppleID" = "Connect Your Apple ID";
+"ConnectAppleIDView.cancel" = "Cancel";
+"ConnectAppleIDView.failedToSignIn" = "Failed to Sign In";
+
+/* SourcesView */
+"SourcesView.sourcesDescription" = "Sources control what apps are available to download through SideStore.";
+"SourcesView.remove" = "Remove";
+"SourcesView.trustedSources" = "Trusted Sources";
+"SourcesView.reviewedText" = "SideStore has reviewed these sources to make sure they meet our safety standards.";
+"SourcesView.sources" = "Sources";
+"SourcesView.done" = "Done";
+
+/* AddSourceView */
+"AddSourceView.sourceURL" = "Source URL";
+"AddSourceView.sourceWarning" = "Please enter the source url here. Then, tap continue to validate and add the source in the next step.";
+"AddSourceView.sourceWarningContinued" = "Be careful with unvalidated third-party sources! Make sure to only add sources that you trust.";
+"AddSourceView.continue" = "Continue";
+"AddSourceView.title" = "Add Source";
+
+/* ConfirmAddSourceView */
+"ConfirmAddSourceView.apps" = "Apps";
+"ConfirmAddSourceView.newsItems" = "News Items";
+"ConfirmAddSourceView.sourceContents" = "Source Contents";
+"ConfirmAddSourceView.sourceIdentifier" = "Source Identifier";
+"ConfirmAddSourceView.sourceURL" = "Source URL";
+"ConfirmAddSourceView.sourceInfo" = "Source Information";
+"ConfirmAddSourceView.addSource" = "Add Source";
+
+/* AppPillButton */
+"AppPillButton.free" = "Free";
+"AppPillButton.open" = "Open";
+
+/* AppAction */
+"AppAction.install" = "Install";
+"AppAction.open" = "Open";
+"AppAction.refresh" = "Refresh";
+"AppAction.activate" = "Activate";
+"AppAction.deactivate" = "Deactivate";
+"AppAction.remove" = "Remove";
+"AppAction.enableJIT" = "Activate JIT";
+"AppAction.backup" = "Backup";
+"AppAction.exportBackup" = "Export backup";
+"AppAction.restoreBackup" = "Restore backup";
+"AppAction.chooseCustomIcon" = "Customize icon";
+"AppAction.resetIcon" = "Reset icon";
+
+/* AppDetailView*/
+"AppDetailView.Badge.official" = "Official App";
+"AppDetailView.Badge.trusted" = "From Trusted Source";
+"AppDetailView.noScreenshots" = "No screenshots available for this app.";
+"AppDetailView.more" = "More...";
+"AppDetailView.whatsNew" = "What's New";
+"AppDetailView.WhatsNew.versionHistory" = "Version History";
+"AppDetailView.WhatsNew.showOnGithub" = "Show project on GitHub";
+"AppDetailView.reviews" = "Ratings & Reviews";
+"AppDetailView.Reviews.outOf" = "out of %d";
+"AppDetailView.Reviews.ratings" = "%d Ratings";
+"AppDetailView.Reviews.seeAll" = "See All";
+"AppDetailView.version" = "Version %@";
+"AppDetailView.noVersionInformation" = "No version information";
+"AppDetailView.noPermissions" = "The app requires no permissions.";
+"AppDetailView.permissions" = "Permissions";
+"AppDetailView.information" = "Information";
+"AppDetailView.Information.source" = "Source";
+"AppDetailView.Information.developer" = "Developer";
+"AppDetailView.Information.size" = "Size";
+"AppDetailView.Information.latestVersion" = "Latest Version";
+"AppDetailView.Information.compatibility" = "Compatibility";
+"AppDetailView.Information.compatibilityCompatible" = "Unknown";
+"AppDetailView.Information.compatibilityUnknown" = "Unknown";
+"AppDetailView.Information.compatibilityAtLeast" = "Requires iOS %@ or higher";
+"AppDetailView.Information.compatibilityOrLower" = "Requires iOS %@ or lower";
+
+/* AppPermissionGrid */
+"AppPermissionGrid.usageDescription" = "Usage Description";
+
+/* MyAppsView */
+"MyAppsView.active" = "Active";
+"MyAppsView.sideloading" = "Sideloading in progress...";
+"MyAppsView.refreshAll" = "Refresh All";
+"MyAppsView.appIDsRemaining" = "App IDs Remaining";
+"MyAppsView.failedToRefresh" = "Failed to refresh";
+"MyAppsView.apps" = "apps"; /* Keep this lowercase */
+"MyAppsView.viewAppIDs" = "View App IDs";
+"MyAppsView.myApps" = "My Apps";
+"MyAppsView.Hints.NoUpdates.title" = "All Apps are Up To Date";
+"MyAppsView.Hints.NoUpdates.text" = "You will be notified once updates for your apps are available. The updates will then be shown here.";
+"MyAppsView.Hints.NoUpdates.dismissForNow" = "Dismiss for now";
+"MyAppsView.Hints.NoUpdates.dontShowAgain" = "Don't show this again";
+
+/* AppIDsView */
+"AppIDsView.title" = "App IDs";
+"AppIDsView.description" = "Each app and app extension installed with SideStore must register an App ID with Apple.\n\nApp IDs for paid developer accounts never expire, and there is no limit to how many you can create.";
+
+/* AppIconsView */
+"AppIconsView.title" = "App Icon";
+
+/* DevModeView */
+"DevModeView.title" = "Developer Mode";
+"DevModeView.prompt" = "SideStore's Developer Mode gives access to a menu with some debugging actions commonly used by developers. **However, some of them can break SideStore if used in the wrong way.**
+
+You should only enable Developer Mode if you meet one of the following requirements:
+- You are a SideStore developer or contributor
+- You were asked to do this by a helper when getting support
+- You were asked to do this when you reported a bug or helped a developer test a change
+
+**_We will not provide support if you break SideStore with Developer Mode._**";
+"DevModeView.password" = "Password";
+"DevModeView.incorrectPassword" = "Incorrect password.";
+"DevModeView.read" = "Read the text!";
+"DevModeView.console" = "Console";
+"DevModeView.dataExplorer" = "Data File Explorer";
+"DevModeView.tmpExplorer" = "Temporary File Explorer";
+"DevModeView.skipResign" = "Skip Resign";
+"DevModeView.footer" = "Skip Resign should only be used when you have an IPA that you have self signed. Otherwise, it will break things, and might make SideStore crash (there is absolutely no error handling and everything is expected to work).";
+"DevModeView.minimuxer" = "minimuxer debug actions";
+"DevModeView.Minimuxer.dumpProfiles" = "Dump provisioning profiles to Documents directory";
+"DevModeView.Minimuxer.afcExplorer" = "AFC File Explorer (check footer for notes)";
+"DevModeView.Minimuxer.footer" = "Notes on AFC File Explorer:
+- If nothing shows up, check minimuxer logs for error
+- It is currently extremely very unoptimized and may be very slow; a new AFC client is created for every action
+- It is currently limited to a maximum depth of 3 to ensure it doesn't take too long to iterate over everything when you open it
+- Very buggy
+- There are multiple unimplemented actions";
+"DevModeView.unstableFeaturesNightlyOnly" = "Unstable Features are only available on nightly builds or debug builds";
+
+/* AsyncFallibleButton */
+"AsyncFallibleButton.error" = "An error occurred";
+
+/* AdvancedSettingsView */
+"AdvancedSettingsView.title" = "Advanced Settings";
+"AdvancedSettingsView.anisetteSettings" = "Anisette";
+"AdvancedSettingsView.AnisetteSettings.server" = "Anisette Server";
+"AdvancedSettingsView.AnisetteSettings.usePreferred" = "Use preferred servers";
+"AdvancedSettingsView.AnisetteSettings.anisetteURL" = "Anisette URL";
+"AdvancedSettingsView.AnisetteSettings.footer" = "If you disable \"Use preferred servers\" then SideStore will use the server you input into the \"Anisette URL\" box rather than one selected in \"Anisette Server\".";
+"AdvancedSettingsView.dangerZone" = "Danger Zone";
+
+/* UnstableFeaturesView */
+"UnstableFeaturesView.title" = "Unstable Features";
+"UnstableFeaturesView.description" = "Unstable Features are features that are currently being tested or still a work-in-progress and not ready for public usage. Because of this, they are only available on nightly builds. By default, all unstable features are off. Additionally, only more stable unstable features are available in Advanced Settings; most are locked behind Developer Mode to ensure normal users don't use them.
+
+Every unstable feature has a tracking issue, which contains info on what the unstable feature adds and tracks the unstable feature status. To view a tracking issue for an unstable feature, simply click it in the list. **Please use the tracking issue for reporting bugs or giving feedback.**
+
+**Do not ask for support on using unstable features, you will not receive any help.**";
+"UnstableFeaturesView.noUnstableFeatures" = "There are currently no unstable features available.";

@@ -51,9 +51,14 @@ open class MergePolicy: RSTRelationshipPreservingMergePolicy
                         print("[ALTLog] Resolving AppVersion context-level conflict. Most likely due to migrating from pre-AppVersion model version.", primaryAppVersion)
                     }
                     
+                case is Source where conflict.conflictingObjects.count == 2:
+                    // Use the first one
+                    let second = conflict.conflictingObjects[1]
+                    second.managedObjectContext?.delete(second)
+                    
                 default:
                     // Unknown context-level conflict.
-                    assertionFailure("MergePolicy is only intended to work with database-level conflicts.")
+                    assertionFailure("MergePolicy is only intended to work with database-level conflicts. \(conflict.conflictingObjects.map { obj in obj.description }.joined(separator: ", "))")
                 }
             }
             

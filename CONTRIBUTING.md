@@ -4,11 +4,11 @@ Thank you for your interest in contributing to SideStore! SideStore is a communi
 
 There are many ways to contribute to SideStore, so if you aren't a developer, there are still many other ways you can help out:
 
--   [Writing documentation](https://github.com/SideStore/SideStore-Docs)
--   [Submitting detailed bug reports and suggesting new features](https://github.com/SideStore/SideStore/issues/new/choose)
--   Helping out with support
-    -   [Discord](https://discord.gg/RgpFBX3Q3k)
-    -   [GitHub Discussions](https://github.com/SideStore/SideStore/discussions)
+- [Writing documentation](https://github.com/SideStore/SideStore-Docs)
+- [Submitting detailed bug reports and suggesting new features](https://github.com/SideStore/SideStore/issues/new/choose)
+- Helping out with support
+  - [Discord](https://discord.gg/RgpFBX3Q3k)
+  - [GitHub Discussions](https://github.com/SideStore/SideStore/discussions)
 
 However, this guide will focus on the development side of things. For now, we will only have setup information here, but you can [join our Discord](https://discord.gg/RgpFBX3Q3k) if you need help
 after setup.
@@ -17,19 +17,19 @@ after setup.
 
 This guide assumes you:
 
--   are on a Mac
--   have Xcode installed
--   have basic command line knowledge (know how to run commands, cd into a directory)
--   have basic Git knowledge ([GitHub Desktop](https://desktop.github.com) is a great tool for beginners, and greatly simplifies working with Git)
--   have basic Swift/iOS development knowledge
+- are on a Mac
+- have Xcode installed
+- have basic command line knowledge (know how to run commands, cd into a directory)
+- have basic Git knowledge ([GitHub Desktop](https://desktop.github.com) is a great tool for beginners, and greatly simplifies working with Git)
+- have basic Swift/iOS development knowledge
 
 ## Setup
 
 1. Fork the SideStore repo on GitHub.
 2. Clone the fork: `git clone https://github.com/<your github username>/SideStore.git --recurse-submodules`
 
-    If you are using GitHub Desktop, refer to
-    [this guide](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/adding-and-cloning-repositories/cloning-and-forking-repositories-from-github-desktop).
+   If you are using GitHub Desktop, refer to
+   [this guide](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/adding-and-cloning-repositories/cloning-and-forking-repositories-from-github-desktop).
 
 3. Copy `CodeSigning.xcconfig.sample` to `CodeSigning.xcconfig` and fill in the values.
 4. **(Development only)** Change the value for `ALTDeviceID` in the Info.plist to your device's UDID. Normally, SideServer embeds the device's UDID in SideStore's Info.plist during installation. When
@@ -38,6 +38,10 @@ This guide assumes you:
 5. Finally, open `AltStore.xcodeproj` in Xcode.
 
 Next, make and test your changes. Then, commit and push your changes using git and make a pull request.
+
+## Developer Mode
+
+If you are using the SwiftUI version of SideStore, there is a developer mode that has some useful development tools. You can access it at the bottom of Settings; the password is in `DevModeView.swift`.
 
 ## Prebuilt binary information
 

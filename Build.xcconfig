@@ -4,6 +4,8 @@
 MARKETING_VERSION = 0.3.2
 CURRENT_PROJECT_VERSION = 3050
 
+SWIFT_ACTIVE_COMPILATION_CONDITIONS[config=Debug] = $(inherited) UNSTABLE
+
 // Vars to be overwritten by `CodeSigning.xcconfig` if exists
 DEVELOPMENT_TEAM = S32Z3HMYVQ
 ORG_IDENTIFIER = com.SideStore

@@ -19,6 +19,33 @@
       }
     },
     {
+      "identity" : "asyncimage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/fabianthdev/AsyncImage",
+      "state" : {
+        "branch" : "main",
+        "revision" : "018a4fffea025066d795ebb025c2769183f3fffb"
+      }
+    },
+    {
+      "identity" : "expandabletext",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/fabianthdev/ExpandableText",
+      "state" : {
+        "branch" : "main",
+        "revision" : "a375f5b8c73f0af69aa7add890378fdf404a29bc"
+      }
+    },
+    {
+      "identity" : "inject",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/krzysztofzablocki/Inject.git",
+      "state" : {
+        "revision" : "abcc4b091fd384cfd09b149a60298b75dc87c5b9",
+        "version" : "1.2.3"
+      }
+    },
+    {
       "identity" : "keychainaccess",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/kishikawakatsumi/KeychainAccess.git",
@@ -34,6 +61,15 @@
       "state" : {
         "revision" : "e8171b3e38a2816f579f58f3dac1522aa39efe41",
         "version" : "4.2.0"
+      }
+    },
+    {
+      "identity" : "localconsole",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/naturecodevoid/LocalConsole.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "4ead9c3e565190172caac62b5179347e02999365"
       }
     },
     {
@@ -64,12 +100,30 @@
       }
     },
     {
+      "identity" : "reachability.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ashleymills/Reachability.swift",
+      "state" : {
+        "branch" : "master",
+        "revision" : "a81b7367f2c46875f29577e03a60c39cdfad0c8d"
+      }
+    },
+    {
       "identity" : "semanticversion",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SwiftPackageIndex/SemanticVersion.git",
       "state" : {
         "revision" : "fc670910dc0903cc269b3d0b776cda5703979c4e",
         "version" : "0.3.5"
+      }
+    },
+    {
+      "identity" : "sfsafesymbols",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SFSafeSymbols/SFSafeSymbols",
+      "state" : {
+        "revision" : "50bc33264e6c0972f905b61af656201cf6091de8",
+        "version" : "4.0.0"
       }
     },
     {
@@ -97,6 +151,15 @@
       "state" : {
         "branch" : "master",
         "revision" : "10a9150ef32d444af326beba76356ae9af95a3e7"
+      }
+    },
+    {
+      "identity" : "zipfoundation",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/weichsel/ZIPFoundation.git",
+      "state" : {
+        "revision" : "43ec568034b3731101dbf7670765d671c30f54f3",
+        "version" : "0.9.16"
       }
     }
   ],

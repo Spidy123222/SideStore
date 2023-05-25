@@ -27,6 +27,9 @@ jobs:
         env:
           COMMIT: ${{ github.event.pull_request.head.sha }}
 
+      - name: Change default icon to alpha icon
+        run: sed -e 's/= Neon/= Storm/' -i '' ./AltStore.xcodeproj/project.pbxproj
+
       - name: Get version
         id: version
         run: echo "version=$(grep MARKETING_VERSION Build.xcconfig | sed -e "s/MARKETING_VERSION = //g")" >> $GITHUB_OUTPUT
