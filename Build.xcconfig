@@ -4,7 +4,7 @@
 MARKETING_VERSION = 0.3.2
 CURRENT_PROJECT_VERSION = 3050
 
-SWIFT_ACTIVE_COMPILATION_CONDITIONS[config=Debug] = $(inherited) UNSTABLE
+SWIFT_ACTIVE_COMPILATION_CONDITIONS = $(inherited) UNSTABLE
 
 // Vars to be overwritten by `CodeSigning.xcconfig` if exists
 DEVELOPMENT_TEAM = S32Z3HMYVQ
@@ -22,7 +22,7 @@ PRODUCT_BUNDLE_IDENTIFIER   = $(ORG_PREFIX).SideStore
 // add team ID to bundle ID for debug builds since these will most likely be installed via Xcode
 // SideStore will expect the team ID to be at the end of the bundle ID, but this doesn't happen when we install via Xcode
 // we don't want to do this for release since those builds will most likely be installed via SideServer, which adds the team ID
-PRODUCT_BUNDLE_IDENTIFIER[config=Debug] = $(ORG_PREFIX).SideStore.$(DEVELOPMENT_TEAM)
+PRODUCT_BUNDLE_IDENTIFIER = $(ORG_PREFIX).SideStore.$(DEVELOPMENT_TEAM)
 
 EXTENSION_PREFIX            = $(PRODUCT_BUNDLE_IDENTIFIER)
 APP_GROUP_IDENTIFIER        = $(PRODUCT_BUNDLE_IDENTIFIER)
