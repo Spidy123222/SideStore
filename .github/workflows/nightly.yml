@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - develop
+      - Swift-unstable-improvements
 
 jobs:
   build:
