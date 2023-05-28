@@ -42,11 +42,14 @@ final class LaunchViewController: RSTLaunchViewController, UIDocumentPickerDeleg
     override func viewDidLoad()
     {
         defer {
-            // Create destinationViewController now so view controllers can register for receiving Notifications.
-//            self.destinationViewController = self.storyboard!.instantiateViewController(withIdentifier: "tabBarController") as! TabBarController
-            let rootView = RootView()
-                .environment(\.managedObjectContext, DatabaseManager.shared.viewContext)
-            self.destinationViewController = UIHostingController(rootView: rootView)
+            if UnstableFeatures.enabled(.swiftUI) {
+                let rootView = RootView()
+                    .environment(\.managedObjectContext, DatabaseManager.shared.viewContext)
+                self.destinationViewController = UIHostingController(rootView: rootView)
+            } else {
+                // Create destinationViewController now so view controllers can register for receiving Notifications.
+                self.destinationViewController = self.storyboard!.instantiateViewController(withIdentifier: "tabBarController") as! TabBarController
+            }
         }
         super.viewDidLoad()
     }

@@ -37,6 +37,8 @@ struct MyAppsView: View {
     @ObservedObject
     var viewModel = MyAppsViewModel()
     
+    @State var isShowingAppIconSwitcher = false
+    
     // TODO: Refactor
     @State var isRefreshingAllApps: Bool = false
     @State var selectedSideloadingIpaURL: URL?
@@ -65,6 +67,10 @@ struct MyAppsView: View {
     
     var body: some View {
         ScrollView {
+            NavigationLink("", isActive: self.$isShowingAppIconSwitcher) {
+                AppIconsView()
+            }.hidden().frame(width: 0, height: 0)
+            
             LazyVStack(spacing: 16) {
                 if let progress = SideloadingManager.shared.progress {
                     VStack {
@@ -261,7 +267,7 @@ extension MyAppsView {
         }
         
         guard installedApp.bundleIdentifier != StoreApp.altstoreAppID else {
-            return [.refresh]
+            return [.refresh, .chooseCustomIcon]
         }
         
         var actions: [AppAction] = []
@@ -401,7 +407,11 @@ extension MyAppsView {
     }
     
     func chooseIcon(for app: InstalledApp) {
-        
+        if app.bundleIdentifier == StoreApp.altstoreAppID {
+            self.isShowingAppIconSwitcher = true
+        } else {
+            
+        }
     }
     
     func resetIcon(for app: InstalledApp) {

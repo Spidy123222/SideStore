@@ -31,13 +31,11 @@ struct SettingsView: View {
     @AppStorage("isDevModeEnabled")
     var isDevModeEnabled: Bool = false
     
-    @AppStorage("isDebugLoggingEnabled")
-    var isDebugLoggingEnabled: Bool = false
-    
     @State var isShowingConnectAppleIDView = false
     @State var isShowingResetPairingFileConfirmation = false
     @State var isShowingDevModePrompt = false
     @State var isShowingDevModeMenu = false
+    @State var isShowingResetAdiPbConfirmation = false
 
     @State var externalURLToShow: URL?
     @State var quickLookURL: URL?
@@ -104,7 +102,7 @@ struct SettingsView: View {
             }
             
             Section {
-                NavigationLink("Show Refresh Attempts") {
+                NavigationLink(L10n.SettingsView.showRefreshAttempts) {
                     RefreshAttemptsView()
                 }
 
@@ -163,19 +161,13 @@ struct SettingsView: View {
             }
             
             Section {
-                NavigationLink("Show Error Log") {
+                NavigationLink(L10n.SettingsView.showErrorLog) {
                     ErrorLogView()
                 }
                 
                 NavigationLink(L10n.AdvancedSettingsView.title) {
                     AdvancedSettingsView()
                 }
-                
-                Toggle(L10n.SettingsView.debugLogging, isOn: self.$isDebugLoggingEnabled)
-                    .onChange(of: self.isDebugLoggingEnabled) { value in
-                        UserDefaults.shared.isDebugLoggingEnabled = value
-                        set_debug(value)
-                    }
                 
                 AsyncFallibleButton(action: self.exportLogs, label: { execute in Text(L10n.SettingsView.exportLogs) })
 
@@ -191,18 +183,27 @@ struct SettingsView: View {
                     }
                 }
 
-                SwiftUI.Button(L10n.SettingsView.switchToUIKit, action: self.switchToUIKit)
-
                 SwiftUI.Button(L10n.SettingsView.resetImageCache, action: self.resetImageCache)
                     .foregroundColor(.red)
 
-                SwiftUI.Button("Reset Pairing File") {
+                SwiftUI.Button(L10n.SettingsView.resetPairingFile) {
                     self.isShowingResetPairingFileConfirmation = true
                 }
                 .foregroundColor(.red)
                 .actionSheet(isPresented: self.$isShowingResetPairingFileConfirmation) {
-                    ActionSheet(title: Text("Are you sure to reset the pairing file?"), message: Text("You can reset the pairing file when you cannot sideload apps or enable JIT. SideStore will close when the file has been deleted."), buttons: [
-                        .destructive(Text("Delete and Reset"), action: self.resetPairingFile),
+                    ActionSheet(title: Text(L10n.SettingsView.ResetPairingFile.title), message: Text(L10n.SettingsView.ResetPairingFile.description), buttons: [
+                        .destructive(Text(L10n.SettingsView.resetPairingFile), action: self.resetPairingFile),
+                        .cancel()
+                    ])
+                }
+                
+                SwiftUI.Button(L10n.SettingsView.resetAdiPb) {
+                    self.isShowingResetAdiPbConfirmation = true
+                }
+                .foregroundColor(.red)
+                .actionSheet(isPresented: self.$isShowingResetAdiPbConfirmation) {
+                    ActionSheet(title: Text(L10n.SettingsView.ResetAdiPb.title), message: Text(L10n.SettingsView.ResetAdiPb.description), buttons: [
+                        .destructive(Text(L10n.SettingsView.resetAdiPb), action: self.resetAdiPb),
                         .cancel()
                     ])
                 }
@@ -225,13 +226,11 @@ struct SettingsView: View {
             }
 
             
-            Section {
-                
-            } footer: {
+            Section {} footer: {
                 Text("SideStore \(appVersion)")
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: .infinity)
-            }
+            }.padding([.bottom], 32)
         }
         .listStyle(InsetGroupedListStyle())
         .navigationTitle(L10n.SettingsView.title)
@@ -253,12 +252,9 @@ struct SettingsView: View {
         .enableInjection()
     }
     
-    
 //    var appleIDSection: some View {
 //
 //    }
-    
-    
     
     func connectAppleID() {
         guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else {
@@ -293,13 +289,6 @@ struct SettingsView: View {
         }
     }
     
-    func switchToUIKit() {
-        let storyboard = UIStoryboard(name: "Main", bundle: .main)
-        let rootVC = storyboard.instantiateViewController(withIdentifier: "tabBarController") as! TabBarController
-        
-        UIApplication.shared.keyWindow?.rootViewController = rootVC
-    }
-    
     func resetImageCache() {
         do {
             let url = try FileManager.default.url(
@@ -331,6 +320,13 @@ struct SettingsView: View {
         UIApplication.shared.perform(#selector(URLSessionTask.suspend))
         DispatchQueue.main.asyncAfter(deadline: .now().advanced(by: .milliseconds(500))) {
             exit(0)
+        }
+    }
+    
+    func resetAdiPb() {
+        if Keychain.shared.adiPb != nil {
+            Keychain.shared.adiPb = nil
+            print("Cleared adi.pb from keychain")
         }
     }
     

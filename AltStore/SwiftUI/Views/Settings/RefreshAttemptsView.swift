@@ -55,7 +55,7 @@ struct RefreshAttemptsView: View {
             }
         }
         .background(self.listBackground)
-        .navigationTitle("Refresh Attempts")
+        .navigationTitle(L10n.RefreshAttemptsView.title)
     }
 
     @ViewBuilder

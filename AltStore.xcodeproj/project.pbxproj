@@ -15,7 +15,6 @@
 		191E5FDC290AFA5C001A3B7C /* OpenSSL in Frameworks */ = {isa = PBXBuildFile; productRef = 191E5FDB290AFA5C001A3B7C /* OpenSSL */; };
 		191E607D290B2EA5001A3B7C /* jsmn.c in Sources */ = {isa = PBXBuildFile; fileRef = 191E5FD0290A651D001A3B7C /* jsmn.c */; };
 		191E607E290B2EA7001A3B7C /* jplist.c in Sources */ = {isa = PBXBuildFile; fileRef = 191E5FCF290A651D001A3B7C /* jplist.c */; };
-		1920B04F2924AC8300744F60 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1920B04E2924AC8300744F60 /* Settings.bundle */; };
 		19B9B7452845E6DF0076EF69 /* SelectTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B9B7442845E6DF0076EF69 /* SelectTeamViewController.swift */; };
 		1F07F550295455A300F7BE95 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F07F552295455A300F7BE95 /* Localizable.strings */; };
 		1F07F556295458D800F7BE95 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F07F554295458D800F7BE95 /* Assets.swift */; };
@@ -93,6 +92,7 @@
 		992C896029A6A56500FB3501 /* LocalConsole in Frameworks */ = {isa = PBXBuildFile; productRef = 992C895F29A6A56500FB3501 /* LocalConsole */; };
 		994D6E9B29E326080045B3F7 /* minimuxer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F87D1729D8E4C900B40039 /* minimuxer.swift */; };
 		994D6EB529E35C130045B3F7 /* StoreApp+SideStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994D6EB429E35C130045B3F7 /* StoreApp+SideStore.swift */; };
+		998E3B112A2061850046BBAA /* UnstableFeatures+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998E3B102A2061850046BBAA /* UnstableFeatures+SwiftUI.swift */; };
 		99BCB7DF29A2AC050041D1A7 /* AdvancedSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BCB7DE29A2AC050041D1A7 /* AdvancedSettingsView.swift */; };
 		99C4EF4D2979132100CB538D /* SemanticVersion in Frameworks */ = {isa = PBXBuildFile; productRef = 99C4EF4C2979132100CB538D /* SemanticVersion */; };
 		99D87A60299F1B1100ED09A9 /* DevModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D87A5F299F1B1100ED09A9 /* DevModeView.swift */; };
@@ -589,7 +589,6 @@
 		191E5FCF290A651D001A3B7C /* jplist.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = jplist.c; path = Dependencies/libplist/src/jplist.c; sourceTree = SOURCE_ROOT; };
 		191E5FD0290A651D001A3B7C /* jsmn.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = jsmn.c; path = Dependencies/libplist/src/jsmn.c; sourceTree = SOURCE_ROOT; };
 		191E5FD1290A651D001A3B7C /* jsmn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = jsmn.h; path = Dependencies/libplist/src/jsmn.h; sourceTree = SOURCE_ROOT; };
-		1920B04E2924AC8300744F60 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		19B9B7442845E6DF0076EF69 /* SelectTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTeamViewController.swift; sourceTree = "<group>"; };
 		1F07F551295455A300F7BE95 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1F07F554295458D800F7BE95 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
@@ -659,6 +658,7 @@
 		990D2AFF2A19593F0055D93C /* UnstableFeaturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnstableFeaturesView.swift; sourceTree = "<group>"; };
 		994D6EB429E35C130045B3F7 /* StoreApp+SideStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StoreApp+SideStore.swift"; sourceTree = "<group>"; };
 		9961EC2D29BE9F2E00AF2C6F /* minimuxer-helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "minimuxer-helpers.swift"; path = "Dependencies/minimuxer/minimuxer-helpers.swift"; sourceTree = SOURCE_ROOT; };
+		998E3B102A2061850046BBAA /* UnstableFeatures+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UnstableFeatures+SwiftUI.swift"; sourceTree = "<group>"; };
 		99BCB7DE29A2AC050041D1A7 /* AdvancedSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSettingsView.swift; sourceTree = "<group>"; };
 		99D87A5F299F1B1100ED09A9 /* DevModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevModeView.swift; sourceTree = "<group>"; };
 		99D87A61299F3EC300ED09A9 /* FileExplorer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileExplorer.swift; sourceTree = "<group>"; };
@@ -1322,6 +1322,7 @@
 			isa = PBXGroup;
 			children = (
 				990D2AE12A1910CD0055D93C /* UnstableFeatures.swift */,
+				998E3B102A2061850046BBAA /* UnstableFeatures+SwiftUI.swift */,
 			);
 			path = "Unstable Features";
 			sourceTree = "<group>";
@@ -1951,7 +1952,6 @@
 				BFD247962284D7C100981D42 /* Resources */,
 				BF6C8FA8242935CA00125131 /* Dependencies */,
 				BFD247972284D7D800981D42 /* Supporting Files */,
-				1920B04E2924AC8300744F60 /* Settings.bundle */,
 			);
 			path = AltStore;
 			sourceTree = "<group>";
@@ -2617,7 +2617,6 @@
 				BF44EEF3246B3A17002A52F2 /* AltBackup.ipa in Resources */,
 				BF770E6922BD57DD002A40FE /* Silence.m4a in Resources */,
 				BFD247772284B9A700981D42 /* Assets.xcassets in Resources */,
-				1920B04F2924AC8300744F60 /* Settings.bundle in Resources */,
 				BFF0B6922321A305007A79E1 /* AboutPatreonHeaderView.xib in Resources */,
 				BFB6B22423187A3D0022A802 /* NewsCollectionViewCell.xib in Resources */,
 				BFD247752284B9A500981D42 /* Main.storyboard in Resources */,
@@ -2996,6 +2995,7 @@
 				1F180F94298E7A2500D1C98B /* Source+Trusted.swift in Sources */,
 				BF2901312318F7A800D88A45 /* AppBannerView.swift in Sources */,
 				BFF00D342501BDCF00746320 /* IntentHandler.swift in Sources */,
+				998E3B112A2061850046BBAA /* UnstableFeatures+SwiftUI.swift in Sources */,
 				1F0DD81C2932D2FF007608A4 /* AppScreenshotsScrollView.swift in Sources */,
 				BFDBBD80246CB84F004ED2F3 /* RemoveAppBackupOperation.swift in Sources */,
 				1F545E85298D84CF00589F68 /* FilePreviewView.swift in Sources */,

@@ -53,6 +53,10 @@ internal enum L10n {
       /// Use preferred servers
       internal static let usePreferred = L10n.tr("Localizable", "AdvancedSettingsView.AnisetteSettings.usePreferred", fallback: "Use preferred servers")
     }
+    internal enum DangerZone {
+      /// Debug Logging
+      internal static let debugLogging = L10n.tr("Localizable", "AdvancedSettingsView.DangerZone.debugLogging", fallback: "Debug Logging")
+    }
   }
   internal enum AppAction {
     /// Activate
@@ -283,8 +287,8 @@ internal enum L10n {
     internal static let title = L10n.tr("Localizable", "DevModeView.title", fallback: "Developer Mode")
     /// Temporary File Explorer
     internal static let tmpExplorer = L10n.tr("Localizable", "DevModeView.tmpExplorer", fallback: "Temporary File Explorer")
-    /// Unstable Features are only available on nightly builds or debug builds
-    internal static let unstableFeaturesNightlyOnly = L10n.tr("Localizable", "DevModeView.unstableFeaturesNightlyOnly", fallback: "Unstable Features are only available on nightly builds or debug builds")
+    /// Unstable Features are only available on nightly builds, PR builds and debug builds.
+    internal static let unstableFeaturesNightlyOnly = L10n.tr("Localizable", "DevModeView.unstableFeaturesNightlyOnly", fallback: "Unstable Features are only available on nightly builds, PR builds and debug builds.")
     internal enum Minimuxer {
       /// AFC File Explorer (check footer for notes)
       internal static let afcExplorer = L10n.tr("Localizable", "DevModeView.Minimuxer.afcExplorer", fallback: "AFC File Explorer (check footer for notes)")
@@ -298,6 +302,10 @@ internal enum L10n {
       /// - There are multiple unimplemented actions
       internal static let footer = L10n.tr("Localizable", "DevModeView.Minimuxer.footer", fallback: "Notes on AFC File Explorer:\n- If nothing shows up, check minimuxer logs for error\n- It is currently extremely very unoptimized and may be very slow; a new AFC client is created for every action\n- It is currently limited to a maximum depth of 3 to ensure it doesn't take too long to iterate over everything when you open it\n- Very buggy\n- There are multiple unimplemented actions")
     }
+  }
+  internal enum ErrorLogView {
+    /// ErrorLogView
+    internal static let title = L10n.tr("Localizable", "ErrorLogView.title", fallback: "Error Log")
   }
   internal enum MyAppsView {
     /// MyAppsView
@@ -339,6 +347,10 @@ internal enum L10n {
       }
     }
   }
+  internal enum RefreshAttemptsView {
+    /// RefreshAttemptsView
+    internal static let title = L10n.tr("Localizable", "RefreshAttemptsView.title", fallback: "Refresh Attempts")
+  }
   internal enum RootView {
     /// Browse
     internal static let browse = L10n.tr("Localizable", "RootView.browse", fallback: "Browse")
@@ -360,16 +372,22 @@ internal enum L10n {
     internal static let credits = L10n.tr("Localizable", "SettingsView.credits", fallback: "Credits")
     /// Debug
     internal static let debug = L10n.tr("Localizable", "SettingsView.debug", fallback: "Debug")
-    /// Debug Logging
-    internal static let debugLogging = L10n.tr("Localizable", "SettingsView.debugLogging", fallback: "Debug Logging")
     /// Export Logs
     internal static let exportLogs = L10n.tr("Localizable", "SettingsView.exportLogs", fallback: "Export Logs")
     /// Refreshing Apps
     internal static let refreshingApps = L10n.tr("Localizable", "SettingsView.refreshingApps", fallback: "Refreshing Apps")
     /// Enable Background Refresh to automatically refresh apps in the background when connected to WiFi and with Wireguard active.
     internal static let refreshingAppsFooter = L10n.tr("Localizable", "SettingsView.refreshingAppsFooter", fallback: "Enable Background Refresh to automatically refresh apps in the background when connected to WiFi and with Wireguard active.")
+    /// Reset adi.pb
+    internal static let resetAdiPb = L10n.tr("Localizable", "SettingsView.resetAdiPb", fallback: "Reset adi.pb")
     /// Reset Image Cache
     internal static let resetImageCache = L10n.tr("Localizable", "SettingsView.resetImageCache", fallback: "Reset Image Cache")
+    /// Reset Pairing File
+    internal static let resetPairingFile = L10n.tr("Localizable", "SettingsView.resetPairingFile", fallback: "Reset Pairing File")
+    /// Show Error Log
+    internal static let showErrorLog = L10n.tr("Localizable", "SettingsView.showErrorLog", fallback: "Show Error Log")
+    /// Show Refresh Attempts
+    internal static let showRefreshAttempts = L10n.tr("Localizable", "SettingsView.showRefreshAttempts", fallback: "Show Refresh Attempts")
     /// SwiftUI Redesign
     internal static let swiftUIRedesign = L10n.tr("Localizable", "SettingsView.swiftUIRedesign", fallback: "SwiftUI Redesign")
     /// Switch to UIKit
@@ -394,6 +412,18 @@ internal enum L10n {
         internal static let p2 = L10n.tr("Localizable", "SettingsView.ConnectedAppleID.Footer.p2", fallback: "Your credentials are only sent to Apple's servers and are not accessible by the SideStore Team. Once successfully logged in, the login details are stored securely on your device.")
       }
     }
+    internal enum ResetAdiPb {
+      /// The adi.pb file is used to generate anisette data, which is required to log into an Apple ID. If you are having issues with account related things, you can try this. However, you will be required to do 2FA again. This will do nothing if you are using an older anisette server.
+      internal static let description = L10n.tr("Localizable", "SettingsView.ResetAdiPb.description", fallback: "The adi.pb file is used to generate anisette data, which is required to log into an Apple ID. If you are having issues with account related things, you can try this. However, you will be required to do 2FA again. This will do nothing if you are using an older anisette server.")
+      /// Are you sure you want to reset the adi.pb file?
+      internal static let title = L10n.tr("Localizable", "SettingsView.ResetAdiPb.title", fallback: "Are you sure you want to reset the adi.pb file?")
+    }
+    internal enum ResetPairingFile {
+      /// If you are having issues with SideStore not being able to install/refresh apps or enable JIT, you can try resetting the pairing file. You will need to generate a new pairing file after doing this. SideStore will close when the file has been deleted.
+      internal static let description = L10n.tr("Localizable", "SettingsView.ResetPairingFile.description", fallback: "If you are having issues with SideStore not being able to install/refresh apps or enable JIT, you can try resetting the pairing file. You will need to generate a new pairing file after doing this. SideStore will close when the file has been deleted.")
+      /// Are you sure to reset the pairing file?
+      internal static let title = L10n.tr("Localizable", "SettingsView.ResetPairingFile.title", fallback: "Are you sure to reset the pairing file?")
+    }
   }
   internal enum SourcesView {
     /// Done
@@ -410,12 +440,12 @@ internal enum L10n {
     internal static let trustedSources = L10n.tr("Localizable", "SourcesView.trustedSources", fallback: "Trusted Sources")
   }
   internal enum UnstableFeaturesView {
-    /// Unstable Features are features that are currently being tested or still a work-in-progress and not ready for public usage. Because of this, they are only available on nightly builds. By default, all unstable features are off. Additionally, only more stable unstable features are available in Advanced Settings; most are locked behind Developer Mode to ensure normal users don't use them.
+    /// Unstable Features are features that are currently being tested or still a work-in-progress and not ready for public usage. Because of this, they are only available on nightly builds, PR builds and debug builds. By default, all unstable features are off. Additionally, only more stable unstable features are available in Advanced Settings; most are locked behind Developer Mode to ensure normal users don't use them as they could contain .
     /// 
     /// Every unstable feature has a tracking issue, which contains info on what the unstable feature adds and tracks the unstable feature status. To view a tracking issue for an unstable feature, simply click it in the list. **Please use the tracking issue for reporting bugs or giving feedback.**
     /// 
     /// **Do not ask for support on using unstable features, you will not receive any help.**
-    internal static let description = L10n.tr("Localizable", "UnstableFeaturesView.description", fallback: "Unstable Features are features that are currently being tested or still a work-in-progress and not ready for public usage. Because of this, they are only available on nightly builds. By default, all unstable features are off. Additionally, only more stable unstable features are available in Advanced Settings; most are locked behind Developer Mode to ensure normal users don't use them.\n\nEvery unstable feature has a tracking issue, which contains info on what the unstable feature adds and tracks the unstable feature status. To view a tracking issue for an unstable feature, simply click it in the list. **Please use the tracking issue for reporting bugs or giving feedback.**\n\n**Do not ask for support on using unstable features, you will not receive any help.**")
+    internal static let description = L10n.tr("Localizable", "UnstableFeaturesView.description", fallback: "Unstable Features are features that are currently being tested or still a work-in-progress and not ready for public usage. Because of this, they are only available on nightly builds, PR builds and debug builds. By default, all unstable features are off. Additionally, only more stable unstable features are available in Advanced Settings; most are locked behind Developer Mode to ensure normal users don't use them as they could contain .\n\nEvery unstable feature has a tracking issue, which contains info on what the unstable feature adds and tracks the unstable feature status. To view a tracking issue for an unstable feature, simply click it in the list. **Please use the tracking issue for reporting bugs or giving feedback.**\n\n**Do not ask for support on using unstable features, you will not receive any help.**")
     /// There are currently no unstable features available.
     internal static let noUnstableFeatures = L10n.tr("Localizable", "UnstableFeaturesView.noUnstableFeatures", fallback: "There are currently no unstable features available.")
     /// UnstableFeaturesView

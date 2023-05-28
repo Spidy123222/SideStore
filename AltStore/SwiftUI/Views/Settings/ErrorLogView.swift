@@ -107,7 +107,7 @@ struct ErrorLogView: View {
                 }
             }
         }
-        .navigationBarTitle("Error Log")
+        .navigationBarTitle(L10n.ErrorLogView.title)
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 ModalNavigationLink {

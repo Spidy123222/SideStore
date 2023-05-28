@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 import SafariServices
 import MessageUI
 import Intents
@@ -551,13 +552,9 @@ extension SettingsViewController
                 self.present(alertController, animated: true)
                 self.tableView.deselectRow(at: indexPath, animated: true)
             case .advancedSettings:
-                // Create the URL that deep links to your app's custom settings.
-                if let url = URL(string: UIApplication.openSettingsURLString) {
-                    // Ask the system to open that URL.
-                    UIApplication.shared.open(url)
-                } else {
-                    ELOG("UIApplication.openSettingsURLString invalid")
-                }
+                let controller = UIHostingController(rootView: AdvancedSettingsView())
+                navigationController?.pushViewController(controller, animated: true)
+                self.tableView.deselectRow(at: indexPath, animated: true)
             case .refreshAttempts, .errorLog: break
             }
             
