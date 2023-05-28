@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import minimuxer
 
 private struct Server: Identifiable {
     var id: String { value }
@@ -37,6 +38,9 @@ struct AdvancedSettingsView: View {
     @AppStorage("customAnisetteURL")
     var selectedAnisetteServer: String = ""
     
+    @AppStorage("isDebugLoggingEnabled")
+    var isDebugLoggingEnabled: Bool = false
+    
     var body: some View {
         List {
             Section {
@@ -60,8 +64,13 @@ struct AdvancedSettingsView: View {
                 Text(L10n.AdvancedSettingsView.AnisetteSettings.footer)
             }
             
-            #if UNSTABLE // TODO: remove this once we have more settings for the danger zone.
             Section {
+                Toggle(L10n.AdvancedSettingsView.DangerZone.debugLogging, isOn: self.$isDebugLoggingEnabled)
+                    .onChange(of: self.isDebugLoggingEnabled) { value in
+                        UserDefaults.shared.isDebugLoggingEnabled = value
+                        set_debug(value)
+                    }
+                
                 #if UNSTABLE
                 NavigationLink(L10n.UnstableFeaturesView.title) {
                     UnstableFeaturesView(inDevMode: false)
@@ -71,7 +80,6 @@ struct AdvancedSettingsView: View {
             } header: {
                 Text(L10n.AdvancedSettingsView.dangerZone)
             }
-            #endif
         }
         .navigationTitle(L10n.AdvancedSettingsView.title)
         .enableInjection()

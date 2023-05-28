@@ -65,7 +65,14 @@
 "SettingsView.title" = "Settings";
 "SettingsView.refreshingAppsFooter" = "Enable Background Refresh to automatically refresh apps in the background when connected to WiFi and with Wireguard active.";
 "SettingsView.exportLogs" = "Export Logs";
-"SettingsView.debugLogging" = "Debug Logging";
+"SettingsView.resetAdiPb" = "Reset adi.pb";
+"SettingsView.ResetAdiPb.title" = "Are you sure you want to reset the adi.pb file?";
+"SettingsView.ResetAdiPb.description" = "The adi.pb file is used to generate anisette data, which is required to log into an Apple ID. If you are having issues with account related things, you can try this. However, you will be required to do 2FA again. This will do nothing if you are using an older anisette server.";
+"SettingsView.resetPairingFile" = "Reset Pairing File";
+"SettingsView.ResetPairingFile.title" = "Are you sure to reset the pairing file?";
+"SettingsView.ResetPairingFile.description" = "If you are having issues with SideStore not being able to install/refresh apps or enable JIT, you can try resetting the pairing file. You will need to generate a new pairing file after doing this. SideStore will close when the file has been deleted.";
+"SettingsView.showRefreshAttempts" = "Show Refresh Attempts";
+"SettingsView.showErrorLog" = "Show Error Log";
 
 /* ConnectAppleIDView */
 "ConnectAppleIDView.startWithSignIn" = "Sign in with your Apple ID to get started.";
@@ -198,7 +205,7 @@ You should only enable Developer Mode if you meet one of the following requireme
 - It is currently limited to a maximum depth of 3 to ensure it doesn't take too long to iterate over everything when you open it
 - Very buggy
 - There are multiple unimplemented actions";
-"DevModeView.unstableFeaturesNightlyOnly" = "Unstable Features are only available on nightly builds or debug builds";
+"DevModeView.unstableFeaturesNightlyOnly" = "Unstable Features are only available on nightly builds, PR builds and debug builds.";
 
 /* AsyncFallibleButton */
 "AsyncFallibleButton.error" = "An error occurred";
@@ -211,12 +218,19 @@ You should only enable Developer Mode if you meet one of the following requireme
 "AdvancedSettingsView.AnisetteSettings.anisetteURL" = "Anisette URL";
 "AdvancedSettingsView.AnisetteSettings.footer" = "If you disable \"Use preferred servers\" then SideStore will use the server you input into the \"Anisette URL\" box rather than one selected in \"Anisette Server\".";
 "AdvancedSettingsView.dangerZone" = "Danger Zone";
+"AdvancedSettingsView.DangerZone.debugLogging" = "Debug Logging";
 
 /* UnstableFeaturesView */
 "UnstableFeaturesView.title" = "Unstable Features";
-"UnstableFeaturesView.description" = "Unstable Features are features that are currently being tested or still a work-in-progress and not ready for public usage. Because of this, they are only available on nightly builds. By default, all unstable features are off. Additionally, only more stable unstable features are available in Advanced Settings; most are locked behind Developer Mode to ensure normal users don't use them.
+"UnstableFeaturesView.description" = "Unstable Features are features that are currently being tested or still a work-in-progress and not ready for public usage. Because of this, they are only available on nightly builds, PR builds and debug builds. By default, all unstable features are off. Additionally, only more stable unstable features are available in Advanced Settings; most are locked behind Developer Mode to ensure normal users don't use them as they could contain .
 
 Every unstable feature has a tracking issue, which contains info on what the unstable feature adds and tracks the unstable feature status. To view a tracking issue for an unstable feature, simply click it in the list. **Please use the tracking issue for reporting bugs or giving feedback.**
 
 **Do not ask for support on using unstable features, you will not receive any help.**";
 "UnstableFeaturesView.noUnstableFeatures" = "There are currently no unstable features available.";
+
+/* ErrorLogView */
+"ErrorLogView.title" = "Error Log";
+
+/* RefreshAttemptsView */
+"RefreshAttemptsView.title" = "Refresh Attempts";

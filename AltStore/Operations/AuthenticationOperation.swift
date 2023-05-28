@@ -41,16 +41,16 @@ final class AuthenticationOperation: ResultOperation<(ALTTeam, ALTCertificate, A
     
     private weak var presentingViewController: UIViewController?
 
-//    private lazy var navigationController: UINavigationController = {
-//        let navigationController = self.storyboard.instantiateViewController(withIdentifier: "navigationController") as! UINavigationController
-//        if #available(iOS 13.0, *)
-//        {
-//            navigationController.isModalInPresentation = true
-//        }
-//        return navigationController
-//    }()
-//
-//    private lazy var storyboard = UIStoryboard(name: "Authentication", bundle: nil)
+    private lazy var navigationController: UINavigationController = {
+        let navigationController = self.storyboard.instantiateViewController(withIdentifier: "navigationController") as! UINavigationController
+        if #available(iOS 13.0, *)
+        {
+            navigationController.isModalInPresentation = true
+        }
+        return navigationController
+    }()
+
+    private lazy var storyboard = UIStoryboard(name: "Authentication", bundle: nil)
     
     private var appleIDEmailAddress: String?
     private var appleIDPassword: String?
@@ -267,8 +267,11 @@ final class AuthenticationOperation: ResultOperation<(ALTTeam, ALTCertificate, A
                         super.finish(result)
                         
                         DispatchQueue.main.async {
-//                            self.navigationController.dismiss(animated: true, completion: nil)
-                            self.dismiss()
+                            if UnstableFeatures.enabled(.swiftUI) {
+                                self.dismiss()
+                            } else {
+                                self.navigationController.dismiss(animated: true, completion: nil)
+                            }
                         }
                     }
                 }
@@ -278,8 +281,11 @@ final class AuthenticationOperation: ResultOperation<(ALTTeam, ALTCertificate, A
                 super.finish(result)
                 
                 DispatchQueue.main.async {
-//                    self.navigationController.dismiss(animated: true, completion: nil)
-                    self.dismiss()
+                    if UnstableFeatures.enabled(.swiftUI) {
+                        self.dismiss()
+                    } else {
+                        self.navigationController.dismiss(animated: true, completion: nil)
+                    }
                 }
             }
         }
@@ -290,23 +296,26 @@ private extension AuthenticationOperation
 {
     func present(_ viewController: UIViewController) -> Bool
     {
-        UIApplication.shared.keyWindow?.rootViewController?.present(viewController, animated: true)
-//        guard let presentingViewController = self.presentingViewController else { return false }
-//
-//        self.navigationController.view.tintColor = .white
-//
-//        if self.navigationController.viewControllers.isEmpty
-//        {
-//            guard presentingViewController.presentedViewController == nil else { return false }
-//
-//            self.navigationController.setViewControllers([viewController], animated: false)
-//            presentingViewController.present(self.navigationController, animated: true, completion: nil)
-//        }
-//        else
-//        {
-//            viewController.navigationItem.leftBarButtonItem = nil
-//            self.navigationController.pushViewController(viewController, animated: true)
-//        }
+        if UnstableFeatures.enabled(.swiftUI) {
+            UIApplication.shared.keyWindow?.rootViewController?.present(viewController, animated: true)
+        } else {
+            guard let presentingViewController = self.presentingViewController else { return false }
+            
+            self.navigationController.view.tintColor = .white
+            
+            if self.navigationController.viewControllers.isEmpty
+            {
+                guard presentingViewController.presentedViewController == nil else { return false }
+                
+                self.navigationController.setViewControllers([viewController], animated: false)
+                presentingViewController.present(self.navigationController, animated: true, completion: nil)
+            }
+            else
+            {
+                viewController.navigationItem.leftBarButtonItem = nil
+                self.navigationController.pushViewController(viewController, animated: true)
+            }
+        }
         
         return true
     }
@@ -326,12 +335,37 @@ private extension AuthenticationOperation
         func authenticate()
         {
             DispatchQueue.main.async {
-                let viewController = UIHostingController(rootView: NavigationView {
-                    ConnectAppleIDView { appleID, password, completionHandler in
+                let viewController: UIViewController
+                if UnstableFeatures.enabled(.swiftUI) {
+                    viewController = UIHostingController(rootView: NavigationView {
+                        ConnectAppleIDView { appleID, password, completionHandler in
+                            self.authenticate(appleID: appleID, password: password) { (result) in
+                                completionHandler(result)
+                            }
+                        } completionHandler: { result in
+                            if let (account, session, password) = result
+                            {
+                                // We presented the Auth UI and the user signed in.
+                                // In this case, we'll assume we should show the instructions again.
+                                self.shouldShowInstructions = true
+                                
+                                self.appleIDPassword = password
+                                completionHandler(.success((account, session)))
+                            }
+                            else
+                            {
+                                completionHandler(.failure(OperationError.cancelled))
+                            }
+                        }
+                    }.navigationViewStyle(StackNavigationViewStyle()))
+                } else {
+                    let authenticationViewController = self.storyboard.instantiateViewController(withIdentifier: "authenticationViewController") as! AuthenticationViewController
+                    authenticationViewController.authenticationHandler = { (appleID, password, completionHandler) in
                         self.authenticate(appleID: appleID, password: password) { (result) in
                             completionHandler(result)
                         }
-                    } completionHandler: { result in
+                    }
+                    authenticationViewController.completionHandler = { (result) in
                         if let (account, session, password) = result
                         {
                             // We presented the Auth UI and the user signed in.
@@ -346,7 +380,8 @@ private extension AuthenticationOperation
                             completionHandler(.failure(OperationError.cancelled))
                         }
                     }
-                }.navigationViewStyle(StackNavigationViewStyle()))
+                    viewController = authenticationViewController
+                }
                 
                 if !self.present(viewController)
                 {
@@ -390,50 +425,42 @@ private extension AuthenticationOperation
             case .success(let anisetteData):
                 let verificationHandler: ((@escaping (String?) -> Void) -> Void)?
                 
-//                if let presentingViewController = self.presentingViewController
-//                {
-                    verificationHandler = { (completionHandler) in
-                        DispatchQueue.main.async {
-                            let alertController = UIAlertController(title: NSLocalizedString("Please enter the 6-digit verification code that was sent to your Apple devices.", comment: ""), message: nil, preferredStyle: .alert)
-                            alertController.addTextField { (textField) in
-                                textField.autocorrectionType = .no
-                                textField.autocapitalizationType = .none
-                                textField.keyboardType = .numberPad
-                                
-                                NotificationCenter.default.addObserver(self, selector: #selector(AuthenticationOperation.textFieldTextDidChange(_:)), name: UITextField.textDidChangeNotification, object: textField)
+                verificationHandler = { (completionHandler) in
+                    DispatchQueue.main.async {
+                        let alertController = UIAlertController(title: NSLocalizedString("Please enter the 6-digit verification code that was sent to your Apple devices.", comment: ""), message: nil, preferredStyle: .alert)
+                        alertController.addTextField { (textField) in
+                            textField.autocorrectionType = .no
+                            textField.autocapitalizationType = .none
+                            textField.keyboardType = .numberPad
+                            
+                            NotificationCenter.default.addObserver(self, selector: #selector(AuthenticationOperation.textFieldTextDidChange(_:)), name: UITextField.textDidChangeNotification, object: textField)
+                        }
+                        
+                        let submitAction = UIAlertAction(title: NSLocalizedString("Continue", comment: ""), style: .default) { (action) in
+                            let textField = alertController.textFields?.first
+                            
+                            let code = textField?.text ?? ""
+                            completionHandler(code)
+                        }
+                        submitAction.isEnabled = false
+                        alertController.addAction(submitAction)
+                        self.submitCodeAction = submitAction
+                        
+                        alertController.addAction(UIAlertAction(title: RSTSystemLocalizedString("Cancel"), style: .cancel) { (action) in
+                            completionHandler(nil)
+                        })
+                        
+                        let keyWindow = UIApplication.shared.windows.filter { $0.isKeyWindow }.first
+                        
+                        if var topController = keyWindow?.rootViewController {
+                            while let presentedViewController = topController.presentedViewController {
+                                topController = presentedViewController
                             }
                             
-                            let submitAction = UIAlertAction(title: NSLocalizedString("Continue", comment: ""), style: .default) { (action) in
-                                let textField = alertController.textFields?.first
-                                
-                                let code = textField?.text ?? ""
-                                completionHandler(code)
-                            }
-                            submitAction.isEnabled = false
-                            alertController.addAction(submitAction)
-                            self.submitCodeAction = submitAction
-                            
-                            alertController.addAction(UIAlertAction(title: RSTSystemLocalizedString("Cancel"), style: .cancel) { (action) in
-                                completionHandler(nil)
-                            })
-                            
-                            let keyWindow = UIApplication.shared.windows.filter { $0.isKeyWindow }.first
-
-                            if var topController = keyWindow?.rootViewController {
-                                while let presentedViewController = topController.presentedViewController {
-                                    topController = presentedViewController
-                                }
-
-                                topController.present(alertController, animated: true, completion: nil)
-                            }
+                            topController.present(alertController, animated: true, completion: nil)
                         }
                     }
-//                }
-//                else
-//                {
-//                    // No view controller to present security code alert, so don't provide verificationHandler.
-//                    verificationHandler = nil
-//                }
+                }
                     
                 ALTAppleAPI.shared.authenticate(appleID: appleID, password: password, anisetteData: anisetteData,
                                                 verificationHandler: verificationHandler) { (account, session, error) in
@@ -464,15 +491,17 @@ private extension AuthenticationOperation
                  }
              } else {
                  DispatchQueue.main.async {
-//                     let selectTeamViewController = self.storyboard.instantiateViewController(withIdentifier: "selectTeamViewController") as! SelectTeamViewController
-//
-//                     selectTeamViewController.teams = teams
-//                     selectTeamViewController.completionHandler = completionHandler
-//
-//                     if !self.present(selectTeamViewController)
-//                     {
-//                         return completionHandler(.failure(AuthenticationError.noTeam))
-//                     }
+                     if !UnstableFeatures.enabled(.swiftUI) {
+                         let selectTeamViewController = self.storyboard.instantiateViewController(withIdentifier: "selectTeamViewController") as! SelectTeamViewController
+                         
+                         selectTeamViewController.teams = teams
+                         selectTeamViewController.completionHandler = completionHandler
+                         
+                         if !self.present(selectTeamViewController)
+                         {
+                             return completionHandler(.failure(AuthenticationError.noTeam))
+                         }
+                     }
                  }
              }
          }
@@ -654,21 +683,24 @@ private extension AuthenticationOperation
     
     func showInstructionsIfNecessary(completionHandler: @escaping (Bool) -> Void)
     {
-        return completionHandler(false)
-//        guard self.shouldShowInstructions else { return completionHandler(false) }
-//
-//        DispatchQueue.main.async {
-//            let instructionsViewController = self.storyboard.instantiateViewController(withIdentifier: "instructionsViewController") as! InstructionsViewController
-//            instructionsViewController.showsBottomButton = true
-//            instructionsViewController.completionHandler = {
-//                completionHandler(true)
-//            }
-//
-//            if !self.present(instructionsViewController)
-//            {
-//                completionHandler(false)
-//            }
-//        }
+        if UnstableFeatures.enabled(.swiftUI) {
+            return completionHandler(false)
+        } else {
+            guard self.shouldShowInstructions else { return completionHandler(false) }
+            
+            DispatchQueue.main.async {
+                let instructionsViewController = self.storyboard.instantiateViewController(withIdentifier: "instructionsViewController") as! InstructionsViewController
+                instructionsViewController.showsBottomButton = true
+                instructionsViewController.completionHandler = {
+                    completionHandler(true)
+                }
+                
+                if !self.present(instructionsViewController)
+                {
+                    completionHandler(false)
+                }
+            }
+        }
     }
     
     func showRefreshScreenIfNecessary(signer: ALTSigner, session: ALTAppleAPISession, completionHandler: @escaping (Bool) -> Void)
