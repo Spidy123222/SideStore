@@ -10,15 +10,25 @@ import SwiftUI
 
 struct FilledButtonStyle: ButtonStyle {
     var isLoading: Bool = false
+    var hideLabelOnLoading: Bool = true
+    var tintColor: Color = .accentColor
     
     func makeBody(configuration: Configuration) -> some View {
-        ZStack {
-            configuration.label
-                .opacity(isLoading ? 0 : 1)
+        HStack {
+            if !isLoading || !hideLabelOnLoading {
+                configuration.label
+            }
             
             if isLoading {
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle())
+                // We want to add padding to the left if we don't hide the label
+                if hideLabelOnLoading {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                } else {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .padding([.leading], 2)
+                }
             }
         }
         .foregroundColor(.white)
@@ -27,10 +37,11 @@ struct FilledButtonStyle: ButtonStyle {
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 12)
-                .foregroundColor(.accentColor)
+                .foregroundColor(tintColor)
         )
         .opacity(configuration.isPressed || isLoading ? 0.7 : 1)
         .disabled(isLoading)
+        .enableInjection()
     }
 }
 

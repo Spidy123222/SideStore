@@ -156,6 +156,18 @@ test:
 
 ## -- Building --
 
+enable_unstable:
+	echo >> ./Build.xcconfig
+	echo 'SWIFT_ACTIVE_COMPILATION_CONDITIONS = $$(inherited) UNSTABLE' >> ./Build.xcconfig
+
+enable_mdc:
+	echo >> ./Build.xcconfig
+	echo 'SWIFT_ACTIVE_COMPILATION_CONDITIONS = $$(inherited) MDC' >> ./Build.xcconfig
+	echo 'GCC_PREPROCESSOR_DEFINITIONS = $$(inherited) MDC=1' >> ./Build.xcconfig
+	echo 'INFOPLIST_PREPROCESSOR_DEFINITIONS = $$(inherited) MDC=1' >> ./Build.xcconfig
+
+DSYM_FOLDER ?= ./dSYM
+
 build:
 	@xcodebuild -project AltStore.xcodeproj \
 				-scheme AltStore \
@@ -166,15 +178,18 @@ build:
 				CODE_SIGNING_ALLOWED=NO \
 				DEVELOPMENT_TEAM=XYZ0123456 \
 				ORG_IDENTIFIER=com.SideStore \
-				DWARF_DSYM_FOLDER_PATH="."
+				DWARF_DSYM_FOLDER_PATH="$(DSYM_FOLDER)"
 
 fakesign:
 	rm -rf archive.xcarchive/Products/Applications/SideStore.app/Frameworks/AltStoreCore.framework/Frameworks/
 	ldid -SAltStore/Resources/ReleaseEntitlements.plist archive.xcarchive/Products/Applications/SideStore.app/SideStore
 
-ipa:
-	mkdir Payload
-	mkdir Payload/SideStore.app
-	cp -R archive.xcarchive/Products/Applications/SideStore.app/ Payload/SideStore.app/
-	zip -r SideStore.ipa Payload
+IPA_NAME ?= SideStore.ipa
 
+ipa:
+	mkdir -p Payload/SideStore.app
+	cp -R archive.xcarchive/Products/Applications/SideStore.app/ Payload/SideStore.app/
+	zip -r $(IPA_NAME) Payload
+
+clean:
+	rm -rf archive.xcarchive Payload

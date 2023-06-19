@@ -19,7 +19,7 @@ struct AdvancedSettingsView: View {
     @ObservedObject private var iO = Inject.observer
     
     private let anisetteServers = [
-        Server(display: "SideStore", value: "https://ani.sidestore.io"),
+        Server(display: "SideStore", value: "http://ani.sidestore.io:6969"),
         Server(display: "Macley (US)", value: "http://us1.sternserv.tech"),
         Server(display: "Macley (DE)", value: "http://de1.sternserv.tech"),
         Server(display: "DrPudding", value: "https://sign.rheaa.xyz"),

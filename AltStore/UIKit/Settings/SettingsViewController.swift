@@ -26,6 +26,7 @@ extension SettingsViewController
         case instructions
         case credits
         case debug
+        case mdc
     }
     
     fileprivate enum AppRefreshRow: Int, CaseIterable
@@ -211,6 +212,9 @@ private extension SettingsViewController
             
         case .debug:
             settingsHeaderFooterView.primaryLabel.text = NSLocalizedString("DEBUG", comment: "")
+            
+        case .mdc:
+            settingsHeaderFooterView.primaryLabel.text = NSLocalizedString("REMOVE 3 APP LIMIT", comment: "")
         }
     }
     
@@ -370,6 +374,9 @@ extension SettingsViewController
         case .signIn: return (self.activeTeam == nil) ? 1 : 0
         case .account: return (self.activeTeam == nil) ? 0 : 3
         case .appRefresh: return AppRefreshRow.allCases.count
+        #if !MDC
+        case .mdc: return 0
+        #endif
         default: return super.tableView(tableView, numberOfRowsInSection: section.rawValue)
         }
     }
@@ -397,10 +404,18 @@ extension SettingsViewController
         {
         case .signIn where self.activeTeam != nil: return nil
         case .account where self.activeTeam == nil: return nil
+        #if !MDC
+        case .mdc: return nil
         case .signIn, .account, .patreon, .appRefresh, .credits, .debug:
             let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderFooterView") as! SettingsHeaderFooterView
             self.prepare(headerView, for: section, isHeader: true)
             return headerView
+        #else
+        case .signIn, .account, .patreon, .appRefresh, .credits, .debug, .mdc:
+            let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderFooterView") as! SettingsHeaderFooterView
+            self.prepare(headerView, for: section, isHeader: true)
+            return headerView
+        #endif
             
         case .instructions: return nil
         }
@@ -417,7 +432,7 @@ extension SettingsViewController
             self.prepare(footerView, for: section, isHeader: false)
             return footerView
             
-        case .account, .credits, .debug, .instructions: return nil
+        case .account, .credits, .debug, .instructions, .mdc: return nil
         }
     }
 
@@ -428,9 +443,16 @@ extension SettingsViewController
         {
         case .signIn where self.activeTeam != nil: return 1.0
         case .account where self.activeTeam == nil: return 1.0
+        #if !MDC
+        case .mdc: return 0.0
         case .signIn, .account, .patreon, .appRefresh, .credits, .debug:
             let height = self.preferredHeight(for: self.prototypeHeaderFooterView, in: section, isHeader: true)
             return height
+        #else
+        case .signIn, .account, .patreon, .appRefresh, .credits, .debug, .mdc:
+            let height = self.preferredHeight(for: self.prototypeHeaderFooterView, in: section, isHeader: true)
+            return height
+        #endif
             
         case .instructions: return 0.0
         }
@@ -447,7 +469,7 @@ extension SettingsViewController
             let height = self.preferredHeight(for: self.prototypeHeaderFooterView, in: section, isHeader: false)
             return height
             
-        case .account, .credits, .debug, .instructions: return 0.0
+        case .account, .credits, .debug, .instructions, .mdc: return 0.0
         }
     }
 }
@@ -557,6 +579,12 @@ extension SettingsViewController
                 self.tableView.deselectRow(at: indexPath, animated: true)
             case .refreshAttempts, .errorLog: break
             }
+        #if MDC
+        case .mdc:
+            let controller = UIHostingController(rootView: Remove3AppLimitView())
+            navigationController?.pushViewController(controller, animated: true)
+            self.tableView.deselectRow(at: indexPath, animated: true)
+        #endif
             
         default: break
         }

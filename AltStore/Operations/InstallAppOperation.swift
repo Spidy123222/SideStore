@@ -187,11 +187,7 @@ final class InstallAppOperation: ResultOperation<InstalledApp>
                             }))
                             
                             DispatchQueue.main.async {
-                                let keyWindow = UIApplication.shared.windows.filter { $0.isKeyWindow }.first
-                                if var topController = keyWindow?.rootViewController {
-                                    while let presentedViewController = topController.presentedViewController {
-                                        topController = presentedViewController
-                                    }
+                                if var topController = UIApplication.topController {
                                     topController.present(alert, animated: true)
                                 } else {
                                     print("No key window? Let's just open Safari")

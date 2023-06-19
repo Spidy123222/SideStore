@@ -88,7 +88,7 @@ struct AsyncFallibleButton<Label: View>: View {
             } catch {
                 DispatchQueue.main.async {
                     state = .error
-                    errorAlertMessage = (error as? LocalizedError)?.failureReason ?? error.localizedDescription
+                    errorAlertMessage = error.message()
                     showErrorAlert = true
                 }
             }

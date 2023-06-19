@@ -14,6 +14,7 @@
 "Action.submit" = "Submit";
 "Action.cancel" = "Cancel";
 "Action.tryAgain" = "Try Again";
+"Action.success" = "Success";
 
 /* NewsView */
 "NewsView.title" = "News";
@@ -58,7 +59,6 @@
 "SettingsView.addToSiri" = "Add to Siri...";
 "SettingsView.refreshingApps" = "Refreshing Apps";
 "SettingsView.switchToUIKit" = "Switch to UIKit";
-"SettingsView.resetImageCache" = "Reset Image Cache";
 "SettingsView.debug" = "Debug";
 "SettingsView.swiftUIRedesign" = "SwiftUI Redesign";
 "SettingsView.credits" = "Credits";
@@ -73,6 +73,9 @@
 "SettingsView.ResetPairingFile.description" = "If you are having issues with SideStore not being able to install/refresh apps or enable JIT, you can try resetting the pairing file. You will need to generate a new pairing file after doing this. SideStore will close when the file has been deleted.";
 "SettingsView.showRefreshAttempts" = "Show Refresh Attempts";
 "SettingsView.showErrorLog" = "Show Error Log";
+"SettingsView.mdcPopup" = "You seem to be on iOS/iPadOS version 15.0-15.7.1 or 16.0-16.1.2 which means you can remove the 3 app limit that free developer accounts have by using the MacDirtyCow exploit.
+
+This is normally not included in SideStore since it triggers antivirus warnings, so you must download an IPA that includes MacDirtyCow separately from sidestore.io or install SideStore using the separate MacDirtyCow source.";
 
 /* ConnectAppleIDView */
 "ConnectAppleIDView.startWithSignIn" = "Sign in with your Apple ID to get started.";
@@ -191,12 +194,18 @@ You should only enable Developer Mode if you meet one of the following requireme
 "DevModeView.password" = "Password";
 "DevModeView.incorrectPassword" = "Incorrect password.";
 "DevModeView.read" = "Read the text!";
-"DevModeView.console" = "Console";
-"DevModeView.dataExplorer" = "Data File Explorer";
-"DevModeView.tmpExplorer" = "Temporary File Explorer";
-"DevModeView.skipResign" = "Skip Resign";
-"DevModeView.footer" = "Skip Resign should only be used when you have an IPA that you have self signed. Otherwise, it will break things, and might make SideStore crash (there is absolutely no error handling and everything is expected to work).";
-"DevModeView.minimuxer" = "minimuxer debug actions";
+"DevModeView.General.header" = "General";
+"DevModeView.General.console" = "Console";
+"DevModeView.General.unstableFeaturesNightlyOnly" = "Unstable Features are only available on nightly builds, PR builds and debug builds.";
+"DevModeView.General.resetImageCache" = "Reset Image Cache";
+"DevModeView.General.disableDevMode" = "Disable Developer Mode";
+"DevModeView.Files.header" = "Files";
+"DevModeView.Files.dataExplorer" = "Data File Explorer";
+"DevModeView.Files.tmpExplorer" = "Temporary File Explorer";
+"DevModeView.Signing.header" = "Signing";
+"DevModeView.Signing.skipResign" = "Skip Resign";
+"DevModeView.Signing.footer" = "Skip Resign should only be used when you have an IPA that you have self signed. Otherwise, it will break things, and might make SideStore crash (there is absolutely no error handling and everything is expected to work).";
+"DevModeView.Minimuxer.header" = "minimuxer debug actions";
 "DevModeView.Minimuxer.dumpProfiles" = "Dump provisioning profiles to Documents directory";
 "DevModeView.Minimuxer.afcExplorer" = "AFC File Explorer (check footer for notes)";
 "DevModeView.Minimuxer.footer" = "Notes on AFC File Explorer:
@@ -205,7 +214,8 @@ You should only enable Developer Mode if you meet one of the following requireme
 - It is currently limited to a maximum depth of 3 to ensure it doesn't take too long to iterate over everything when you open it
 - Very buggy
 - There are multiple unimplemented actions";
-"DevModeView.unstableFeaturesNightlyOnly" = "Unstable Features are only available on nightly builds, PR builds and debug builds.";
+"DevModeView.Mdc.header" = "MDC";
+"DevModeView.Mdc.fakeUndo3AppLimitPatch" = "Tell SideStore installd has not been patched (may cause undefined behavior or boot loop if you apply the patch more than once on a real device!!)";
 
 /* AsyncFallibleButton */
 "AsyncFallibleButton.error" = "An error occurred";
@@ -234,3 +244,17 @@ Every unstable feature has a tracking issue, which contains info on what the uns
 
 /* RefreshAttemptsView */
 "RefreshAttemptsView.title" = "Refresh Attempts";
+
+/* Remove3AppLimitView */
+"Remove3AppLimitView.title" = "Remove 3 App Limit";
+"Remove3AppLimitView.notSupported" = "Sorry, the MacDirtyCow exploit is only supported on iOS/iPadOS versions 15.0-15.7.1 or 16.0-16.1.2.";
+"Remove3AppLimitView.patchInfo" = "To remove the 3 app limit that free developer accounts have, SideStore will use the MacDirtyCow exploit to patch installd. The patch will be undone upon boot, so if you want to undo it, simply restart your device.";
+"Remove3AppLimitView.alreadyPatched" = "It seems that installd has already been patched to remove the 3 app limit. Please know that the patch will be undone upon boot, so if the patch isn't working, try restarting your device and then apply the patch again using SideStore.";
+"Remove3AppLimitView.tenAppsInfo" = "The patch will allow for 10 apps per Apple ID. If you need more than 10 apps, you can sideload SideStore again with a different Apple ID than the one you are using with this SideStore to allow for 10 more apps.";
+"Remove3AppLimitView.applyPatch" = "Apply Patch";
+"Remove3AppLimitView.Errors.noFDA" = "Failed to get full disk access: %s";
+"Remove3AppLimitView.Errors.failedPatchd" = "Failed to patch installd";
+"Remove3AppLimitView.success" = "Successfully applied the patch!";
+"Remove3AppLimitView.NotAppliedAlert.message" = "It seems that you have not applied the patch that removes the 3 app limit. Would you like to apply the patch?";
+"Remove3AppLimitView.NotAppliedAlert.apply" = "Apply patch";
+"Remove3AppLimitView.NotAppliedAlert.continueWithout" = "Continue without patch";

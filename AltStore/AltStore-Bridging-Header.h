@@ -6,3 +6,7 @@
 #import "ALTAppPatcher.h"
 
 #include "fragmentzip.h"
+
+#ifdef MDC
+#import "grant_full_disk_access.h"
+#endif /* MDC */

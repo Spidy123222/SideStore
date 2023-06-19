@@ -57,8 +57,12 @@ final class LaunchViewController: RSTLaunchViewController, UIDocumentPickerDeleg
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
 
+        #if MDC
+        MDC.alertIfNotPatched()
+        #endif
+        
         #if !targetEnvironment(simulator)
-        if !UserDefaults.standard.onboardingComplete {
+        if UnstableFeatures.enabled(.onboarding) && !UserDefaults.standard.onboardingComplete {
             self.showOnboarding()
             return
         }
@@ -152,7 +156,7 @@ final class LaunchViewController: RSTLaunchViewController, UIDocumentPickerDeleg
             try start(pairing_file, documentsDirectory)
         } catch {
             try! FileManager.default.removeItem(at: FileManager.default.documentsDirectory.appendingPathComponent("\(pairingFileName)"))
-            displayError("minimuxer failed to start, please restart SideStore. \((error as? LocalizedError)?.failureReason ?? "UNKNOWN ERROR!!!!!! REPORT TO GITHUB ISSUES!")")
+            displayError("minimuxer failed to start, please restart SideStore. \(error.message())")
         }
         set_debug(UserDefaults.shared.isDebugLoggingEnabled)
         start_auto_mounter(documentsDirectory)

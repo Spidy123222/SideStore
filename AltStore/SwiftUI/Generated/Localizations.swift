@@ -21,6 +21,8 @@ internal enum L10n {
     internal static let enable = L10n.tr("Localizable", "Action.enable", fallback: "Enable")
     /// Submit
     internal static let submit = L10n.tr("Localizable", "Action.submit", fallback: "Submit")
+    /// Success
+    internal static let success = L10n.tr("Localizable", "Action.success", fallback: "Success")
     /// Try Again
     internal static let tryAgain = L10n.tr("Localizable", "Action.tryAgain", fallback: "Try Again")
   }
@@ -258,16 +260,8 @@ internal enum L10n {
     internal static let whyDoWeNeedThis = L10n.tr("Localizable", "ConnectAppleIDView.whyDoWeNeedThis", fallback: "Why do we need this?")
   }
   internal enum DevModeView {
-    /// Console
-    internal static let console = L10n.tr("Localizable", "DevModeView.console", fallback: "Console")
-    /// Data File Explorer
-    internal static let dataExplorer = L10n.tr("Localizable", "DevModeView.dataExplorer", fallback: "Data File Explorer")
-    /// Skip Resign should only be used when you have an IPA that you have self signed. Otherwise, it will break things, and might make SideStore crash (there is absolutely no error handling and everything is expected to work).
-    internal static let footer = L10n.tr("Localizable", "DevModeView.footer", fallback: "Skip Resign should only be used when you have an IPA that you have self signed. Otherwise, it will break things, and might make SideStore crash (there is absolutely no error handling and everything is expected to work).")
     /// Incorrect password.
     internal static let incorrectPassword = L10n.tr("Localizable", "DevModeView.incorrectPassword", fallback: "Incorrect password.")
-    /// minimuxer debug actions
-    internal static let minimuxer = L10n.tr("Localizable", "DevModeView.minimuxer", fallback: "minimuxer debug actions")
     /// Password
     internal static let password = L10n.tr("Localizable", "DevModeView.password", fallback: "Password")
     /// SideStore's Developer Mode gives access to a menu with some debugging actions commonly used by developers. **However, some of them can break SideStore if used in the wrong way.**
@@ -281,14 +275,34 @@ internal enum L10n {
     internal static let prompt = L10n.tr("Localizable", "DevModeView.prompt", fallback: "SideStore's Developer Mode gives access to a menu with some debugging actions commonly used by developers. **However, some of them can break SideStore if used in the wrong way.**\n\nYou should only enable Developer Mode if you meet one of the following requirements:\n- You are a SideStore developer or contributor\n- You were asked to do this by a helper when getting support\n- You were asked to do this when you reported a bug or helped a developer test a change\n\n**_We will not provide support if you break SideStore with Developer Mode._**")
     /// Read the text!
     internal static let read = L10n.tr("Localizable", "DevModeView.read", fallback: "Read the text!")
-    /// Skip Resign
-    internal static let skipResign = L10n.tr("Localizable", "DevModeView.skipResign", fallback: "Skip Resign")
     /// DevModeView
     internal static let title = L10n.tr("Localizable", "DevModeView.title", fallback: "Developer Mode")
-    /// Temporary File Explorer
-    internal static let tmpExplorer = L10n.tr("Localizable", "DevModeView.tmpExplorer", fallback: "Temporary File Explorer")
-    /// Unstable Features are only available on nightly builds, PR builds and debug builds.
-    internal static let unstableFeaturesNightlyOnly = L10n.tr("Localizable", "DevModeView.unstableFeaturesNightlyOnly", fallback: "Unstable Features are only available on nightly builds, PR builds and debug builds.")
+    internal enum Files {
+      /// Data File Explorer
+      internal static let dataExplorer = L10n.tr("Localizable", "DevModeView.Files.dataExplorer", fallback: "Data File Explorer")
+      /// Files
+      internal static let header = L10n.tr("Localizable", "DevModeView.Files.header", fallback: "Files")
+      /// Temporary File Explorer
+      internal static let tmpExplorer = L10n.tr("Localizable", "DevModeView.Files.tmpExplorer", fallback: "Temporary File Explorer")
+    }
+    internal enum General {
+      /// Console
+      internal static let console = L10n.tr("Localizable", "DevModeView.General.console", fallback: "Console")
+      /// Disable Developer Mode
+      internal static let disableDevMode = L10n.tr("Localizable", "DevModeView.General.disableDevMode", fallback: "Disable Developer Mode")
+      /// General
+      internal static let header = L10n.tr("Localizable", "DevModeView.General.header", fallback: "General")
+      /// Reset Image Cache
+      internal static let resetImageCache = L10n.tr("Localizable", "DevModeView.General.resetImageCache", fallback: "Reset Image Cache")
+      /// Unstable Features are only available on nightly builds, PR builds and debug builds.
+      internal static let unstableFeaturesNightlyOnly = L10n.tr("Localizable", "DevModeView.General.unstableFeaturesNightlyOnly", fallback: "Unstable Features are only available on nightly builds, PR builds and debug builds.")
+    }
+    internal enum Mdc {
+      /// Tell SideStore installd has not been patched (may cause undefined behavior or boot loop if you apply the patch more than once on a real device!!)
+      internal static let fakeUndo3AppLimitPatch = L10n.tr("Localizable", "DevModeView.Mdc.fakeUndo3AppLimitPatch", fallback: "Tell SideStore installd has not been patched (may cause undefined behavior or boot loop if you apply the patch more than once on a real device!!)")
+      /// MDC
+      internal static let header = L10n.tr("Localizable", "DevModeView.Mdc.header", fallback: "MDC")
+    }
     internal enum Minimuxer {
       /// AFC File Explorer (check footer for notes)
       internal static let afcExplorer = L10n.tr("Localizable", "DevModeView.Minimuxer.afcExplorer", fallback: "AFC File Explorer (check footer for notes)")
@@ -301,6 +315,16 @@ internal enum L10n {
       /// - Very buggy
       /// - There are multiple unimplemented actions
       internal static let footer = L10n.tr("Localizable", "DevModeView.Minimuxer.footer", fallback: "Notes on AFC File Explorer:\n- If nothing shows up, check minimuxer logs for error\n- It is currently extremely very unoptimized and may be very slow; a new AFC client is created for every action\n- It is currently limited to a maximum depth of 3 to ensure it doesn't take too long to iterate over everything when you open it\n- Very buggy\n- There are multiple unimplemented actions")
+      /// minimuxer debug actions
+      internal static let header = L10n.tr("Localizable", "DevModeView.Minimuxer.header", fallback: "minimuxer debug actions")
+    }
+    internal enum Signing {
+      /// Skip Resign should only be used when you have an IPA that you have self signed. Otherwise, it will break things, and might make SideStore crash (there is absolutely no error handling and everything is expected to work).
+      internal static let footer = L10n.tr("Localizable", "DevModeView.Signing.footer", fallback: "Skip Resign should only be used when you have an IPA that you have self signed. Otherwise, it will break things, and might make SideStore crash (there is absolutely no error handling and everything is expected to work).")
+      /// Signing
+      internal static let header = L10n.tr("Localizable", "DevModeView.Signing.header", fallback: "Signing")
+      /// Skip Resign
+      internal static let skipResign = L10n.tr("Localizable", "DevModeView.Signing.skipResign", fallback: "Skip Resign")
     }
   }
   internal enum ErrorLogView {
@@ -351,6 +375,38 @@ internal enum L10n {
     /// RefreshAttemptsView
     internal static let title = L10n.tr("Localizable", "RefreshAttemptsView.title", fallback: "Refresh Attempts")
   }
+  internal enum Remove3AppLimitView {
+    /// It seems that installd has already been patched to remove the 3 app limit. Please know that the patch will be undone upon boot, so if the patch isn't working, try restarting your device and then apply the patch again using SideStore.
+    internal static let alreadyPatched = L10n.tr("Localizable", "Remove3AppLimitView.alreadyPatched", fallback: "It seems that installd has already been patched to remove the 3 app limit. Please know that the patch will be undone upon boot, so if the patch isn't working, try restarting your device and then apply the patch again using SideStore.")
+    /// Apply Patch
+    internal static let applyPatch = L10n.tr("Localizable", "Remove3AppLimitView.applyPatch", fallback: "Apply Patch")
+    /// Sorry, the MacDirtyCow exploit is only supported on iOS/iPadOS versions 15.0-15.7.1 or 16.0-16.1.2.
+    internal static let notSupported = L10n.tr("Localizable", "Remove3AppLimitView.notSupported", fallback: "Sorry, the MacDirtyCow exploit is only supported on iOS/iPadOS versions 15.0-15.7.1 or 16.0-16.1.2.")
+    /// To remove the 3 app limit that free developer accounts have, SideStore will use the MacDirtyCow exploit to patch installd. The patch will be undone upon boot, so if you want to undo it, simply restart your device.
+    internal static let patchInfo = L10n.tr("Localizable", "Remove3AppLimitView.patchInfo", fallback: "To remove the 3 app limit that free developer accounts have, SideStore will use the MacDirtyCow exploit to patch installd. The patch will be undone upon boot, so if you want to undo it, simply restart your device.")
+    /// Successfully applied the patch!
+    internal static let success = L10n.tr("Localizable", "Remove3AppLimitView.success", fallback: "Successfully applied the patch!")
+    /// The patch will allow for 10 apps per Apple ID. If you need more than 10 apps, you can sideload SideStore again with a different Apple ID than the one you are using with this SideStore to allow for 10 more apps.
+    internal static let tenAppsInfo = L10n.tr("Localizable", "Remove3AppLimitView.tenAppsInfo", fallback: "The patch will allow for 10 apps per Apple ID. If you need more than 10 apps, you can sideload SideStore again with a different Apple ID than the one you are using with this SideStore to allow for 10 more apps.")
+    /// Remove3AppLimitView
+    internal static let title = L10n.tr("Localizable", "Remove3AppLimitView.title", fallback: "Remove 3 App Limit")
+    internal enum Errors {
+      /// Failed to patch installd
+      internal static let failedPatchd = L10n.tr("Localizable", "Remove3AppLimitView.Errors.failedPatchd", fallback: "Failed to patch installd")
+      /// Failed to get full disk access: %s
+      internal static func noFDA(_ p1: UnsafePointer<CChar>) -> String {
+        return L10n.tr("Localizable", "Remove3AppLimitView.Errors.noFDA", p1, fallback: "Failed to get full disk access: %s")
+      }
+    }
+    internal enum NotAppliedAlert {
+      /// Apply patch
+      internal static let apply = L10n.tr("Localizable", "Remove3AppLimitView.NotAppliedAlert.apply", fallback: "Apply patch")
+      /// Continue without patch
+      internal static let continueWithout = L10n.tr("Localizable", "Remove3AppLimitView.NotAppliedAlert.continueWithout", fallback: "Continue without patch")
+      /// It seems that you have not applied the patch that removes the 3 app limit. Would you like to apply the patch?
+      internal static let message = L10n.tr("Localizable", "Remove3AppLimitView.NotAppliedAlert.message", fallback: "It seems that you have not applied the patch that removes the 3 app limit. Would you like to apply the patch?")
+    }
+  }
   internal enum RootView {
     /// Browse
     internal static let browse = L10n.tr("Localizable", "RootView.browse", fallback: "Browse")
@@ -374,14 +430,16 @@ internal enum L10n {
     internal static let debug = L10n.tr("Localizable", "SettingsView.debug", fallback: "Debug")
     /// Export Logs
     internal static let exportLogs = L10n.tr("Localizable", "SettingsView.exportLogs", fallback: "Export Logs")
+    /// You seem to be on iOS/iPadOS version 15.0-15.7.1 or 16.0-16.1.2 which means you can remove the 3 app limit that free developer accounts have by using the MacDirtyCow exploit.
+    /// 
+    /// This is normally not included in SideStore since it triggers antivirus warnings, so you must download an IPA that includes MacDirtyCow separately from sidestore.io or install SideStore using the separate MacDirtyCow source.
+    internal static let mdcPopup = L10n.tr("Localizable", "SettingsView.mdcPopup", fallback: "You seem to be on iOS/iPadOS version 15.0-15.7.1 or 16.0-16.1.2 which means you can remove the 3 app limit that free developer accounts have by using the MacDirtyCow exploit.\n\nThis is normally not included in SideStore since it triggers antivirus warnings, so you must download an IPA that includes MacDirtyCow separately from sidestore.io or install SideStore using the separate MacDirtyCow source.")
     /// Refreshing Apps
     internal static let refreshingApps = L10n.tr("Localizable", "SettingsView.refreshingApps", fallback: "Refreshing Apps")
     /// Enable Background Refresh to automatically refresh apps in the background when connected to WiFi and with Wireguard active.
     internal static let refreshingAppsFooter = L10n.tr("Localizable", "SettingsView.refreshingAppsFooter", fallback: "Enable Background Refresh to automatically refresh apps in the background when connected to WiFi and with Wireguard active.")
     /// Reset adi.pb
     internal static let resetAdiPb = L10n.tr("Localizable", "SettingsView.resetAdiPb", fallback: "Reset adi.pb")
-    /// Reset Image Cache
-    internal static let resetImageCache = L10n.tr("Localizable", "SettingsView.resetImageCache", fallback: "Reset Image Cache")
     /// Reset Pairing File
     internal static let resetPairingFile = L10n.tr("Localizable", "SettingsView.resetPairingFile", fallback: "Reset Pairing File")
     /// Show Error Log

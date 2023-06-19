@@ -36,6 +36,7 @@ struct SettingsView: View {
     @State var isShowingDevModePrompt = false
     @State var isShowingDevModeMenu = false
     @State var isShowingResetAdiPbConfirmation = false
+    @State var isShowingMDCPopup = false
 
     @State var externalURLToShow: URL?
     @State var quickLookURL: URL?
@@ -99,6 +100,21 @@ struct SettingsView: View {
                 NavigationLink(L10n.AppIconsView.title) {
                     AppIconsView()
                 }
+
+                #if MDC
+                NavigationLink(L10n.Remove3AppLimitView.title) {
+                    Remove3AppLimitView()
+                }
+                #else
+                if MDC.isSupported {
+                    NavigationLink(L10n.Remove3AppLimitView.title) {}
+                        .disabled(true)
+                        .alert(isPresented: self.$isShowingMDCPopup) {
+                            Alert(title: Text(L10n.Remove3AppLimitView.title), message: Text(L10n.SettingsView.mdcPopup))
+                        }
+                        .onTapGesture { self.isShowingMDCPopup = true }
+                }
+                #endif
             }
             
             Section {
@@ -131,7 +147,7 @@ struct SettingsView: View {
                         Spacer()
                         Text("SideStore Team")
                         Image(systemSymbol: .chevronRight)
-                            .foregroundColor(.secondary)
+                            .foregroundColor(.secondary.opacity(0.5))
                     }
                 }
                 .foregroundColor(.primary)
@@ -145,7 +161,7 @@ struct SettingsView: View {
                         Spacer()
                         Text("fabianthdev")
                         Image(systemSymbol: .chevronRight)
-                            .foregroundColor(.secondary)
+                            .foregroundColor(.secondary.opacity(0.5))
                     }
                 }
                 .foregroundColor(.primary)
@@ -182,9 +198,6 @@ struct SettingsView: View {
                         .ignoresSafeArea()
                     }
                 }
-
-                SwiftUI.Button(L10n.SettingsView.resetImageCache, action: self.resetImageCache)
-                    .foregroundColor(.red)
 
                 SwiftUI.Button(L10n.SettingsView.resetPairingFile) {
                     self.isShowingResetPairingFileConfirmation = true
@@ -225,7 +238,6 @@ struct SettingsView: View {
                 Text(L10n.SettingsView.debug)
             }
 
-            
             Section {} footer: {
                 Text("SideStore \(appVersion)")
                     .multilineTextAlignment(.center)
@@ -257,7 +269,7 @@ struct SettingsView: View {
 //    }
     
     func connectAppleID() {
-        guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else {
+        guard let rootViewController = UIApplication.topController else {
             return
         }
 
@@ -286,19 +298,6 @@ struct SettingsView: View {
                     NotificationManager.shared.reportError(error: error)
                 }
             }
-        }
-    }
-    
-    func resetImageCache() {
-        do {
-            let url = try FileManager.default.url(
-                for: .cachesDirectory,
-                in: .userDomainMask,
-                appropriateFor: nil,
-                create: true)
-            try FileManager.default.removeItem(at: url.appendingPathComponent("com.zeu.cache", isDirectory: true))
-        } catch let error {
-            fatalError("\(error)")
         }
     }
 

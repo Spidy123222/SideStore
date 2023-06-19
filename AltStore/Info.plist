@@ -14,7 +14,13 @@
 	<key>ALTPairingFile</key>
 	<string>&lt;insert pairing file here&gt;</string>
 	<key>ALTAnisetteURL</key>
-	<string>https://ani.sidestore.io</string>
+	<!--
+		for some reason, when we use the Info.plist preprocessor, 2 slashes in a row
+		removes the rest of the line and makes the plist invalid. to get around this,
+		we add a variable expansion ( $() ) in between the slashes that will ultimately
+		evaluate to nothing, keeping the original URL while keeping the plist valid.
+	-->
+	<string>http:/$()/ani.sidestore.io:6969</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDocumentTypes</key>
@@ -208,5 +214,13 @@
 	<true/>
 	<key>UIFileSharingEnabled</key>
 	<true/>
+	<!--
+	#if MDC
+	-->
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Full access to files on your device is required to apply the installd patch to remove the 3 app limit that free developer accounts have.</string>
+	<!--
+	#endif
+	-->
 </dict>
 </plist>

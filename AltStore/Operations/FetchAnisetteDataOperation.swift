@@ -156,14 +156,8 @@ final class FetchAnisetteDataOperation: ResultOperation<ALTAnisetteData>, WebSoc
             self.finish(.failure(OperationError.cancelled))
         }))
 
-        let keyWindow = UIApplication.shared.windows.filter { $0.isKeyWindow }.first
-
         DispatchQueue.main.async {
-            if let presentingController = keyWindow?.rootViewController?.presentedViewController {
-                presentingController.present(alert, animated: true)
-            } else {
-                keyWindow?.rootViewController?.present(alert, animated: true)
-            }
+            UIApplication.topController?.present(alert, animated: true)
         }
     }
     

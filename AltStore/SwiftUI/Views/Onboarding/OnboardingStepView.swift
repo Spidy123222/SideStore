@@ -10,7 +10,6 @@ import SwiftUI
 
 
 struct OnboardingStepView<Title: View, Hero: View, Content: View, Action: View>: View {
-
     @ViewBuilder
     var title: Title
 

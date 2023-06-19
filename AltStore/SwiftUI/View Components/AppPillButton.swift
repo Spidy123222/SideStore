@@ -85,8 +85,7 @@ struct AppPillButton: View {
             return
         }
         
-        let _ = AppManager.shared.install(storeApp, presentingViewController: UIApplication.shared.keyWindow?.rootViewController) { result in
-            
+        let _ = AppManager.shared.install(storeApp, presentingViewController: UIApplication.topController) { result in
             switch result {
             case let .success(installedApp):
                 print("Installed app: \(installedApp.bundleIdentifier)")

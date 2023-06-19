@@ -50,6 +50,10 @@ public extension UserDefaults
     @NSManaged var trustedServerURL: String?
     
     @NSManaged var unstableFeatures: Data?
+    #if MDC
+    @NSManaged var hasPatchedInstalldEver: Bool
+    @NSManaged var lastInstalldPatchBootTime: Date?
+    #endif
     
     var activeAppsLimit: Int? {
         get {
@@ -77,8 +81,7 @@ public extension UserDefaults
         let ios14 = OperatingSystemVersion(majorVersion: 14, minorVersion: 0, patchVersion: 0)
         let localServerSupportsRefreshing = !ProcessInfo.processInfo.isOperatingSystemAtLeast(ios14)
         
-        let defaults = [
-            #keyPath(UserDefaults.isDevModeEnabled): false,
+        var defaults = [
             #keyPath(UserDefaults.isConsoleEnabled): false,
             #keyPath(UserDefaults.isDebugLoggingEnabled): false,
             #keyPath(UserDefaults.onboardingComplete): false,
@@ -88,6 +91,16 @@ public extension UserDefaults
             #keyPath(UserDefaults.localServerSupportsRefreshing): localServerSupportsRefreshing,
             #keyPath(UserDefaults.requiresAppGroupMigration): true
         ]
+        
+        #if targetEnvironment(simulator)
+        defaults[#keyPath(UserDefaults.isDevModeEnabled)] = true
+        #else
+        defaults[#keyPath(UserDefaults.isDevModeEnabled)] = false
+        #endif
+        
+        #if MDC
+        defaults[#keyPath(UserDefaults.hasPatchedInstalldEver)] = false
+        #endif
         
         UserDefaults.standard.register(defaults: defaults)
         UserDefaults.shared.register(defaults: defaults)

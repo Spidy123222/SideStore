@@ -216,7 +216,7 @@ class SideloadingManager {
         
         if UserDefaults.standard.activeAppLimitIncludesExtensions
         {
-            firstSentence = NSLocalizedString("Non-developer Apple IDs are limited to 3 active apps and app extensions.", comment: "")
+            firstSentence = NSLocalizedString("Non-developer Apple IDs are limited to \(InstalledApp.freeAccountActiveAppsLimit) active apps and app extensions.", comment: "")
         }
         else
         {
@@ -248,7 +248,6 @@ class SideloadingManager {
             }
         })
         
-        let rootViewController = UIApplication.shared.keyWindow?.rootViewController
-        rootViewController?.present(alertController, animated: true, completion: nil)
+        UIApplication.topController?.present(alertController, animated: true, completion: nil)
     }
 }

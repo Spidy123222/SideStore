@@ -36,8 +36,8 @@ xcuserdata
 .idea/
 
 Payload/
-SideStore.ipa
-*.dSYM
+SideStore*.ipa
+*dSYM
 
 Dependencies/.*-prebuilt-fetch-*
 Dependencies/minimuxer/*

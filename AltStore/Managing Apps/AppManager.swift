@@ -250,26 +250,26 @@ extension AppManager
                 .filter { $0.bundleIdentifier != app.bundleIdentifier } // Don't count app towards total if it matches activating app
                 .sorted { ($0.name, $0.refreshedDate) < ($1.name, $1.refreshedDate) }
             
-            var title: String = NSLocalizedString("Cannot Activate More than 3 Apps", comment: "")
+            var title: String = NSLocalizedString("Cannot Activate More than \(InstalledApp.freeAccountActiveAppsLimit) Apps", comment: "")
             let message: String
             
             if UserDefaults.standard.activeAppLimitIncludesExtensions
             {
                 if app.appExtensions.isEmpty
                 {
-                    message = NSLocalizedString("Non-developer Apple IDs are limited to 3 active apps and app extensions. Please choose an app to deactivate.", comment: "")
+                    message = NSLocalizedString("Non-developer Apple IDs are limited to \(InstalledApp.freeAccountActiveAppsLimit) active apps and app extensions. Please choose an app to deactivate.", comment: "")
                 }
                 else
                 {
-                    title = NSLocalizedString("Cannot Activate More than 3 Apps and App Extensions", comment: "")
+                    title = NSLocalizedString("Cannot Activate More than \(InstalledApp.freeAccountActiveAppsLimit) Apps and App Extensions", comment: "")
                     
                     let appExtensionText = app.appExtensions.count == 1 ? NSLocalizedString("app extension", comment: "") : NSLocalizedString("app extensions", comment: "")
-                    message = String(format: NSLocalizedString("Non-developer Apple IDs are limited to 3 active apps and app extensions, and “%@” contains %@ %@. Please choose an app to deactivate.", comment: ""), app.name, NSNumber(value: app.appExtensions.count), appExtensionText)
+                    message = String(format: NSLocalizedString("Non-developer Apple IDs are limited to \(InstalledApp.freeAccountActiveAppsLimit) active apps and app extensions, and “%@” contains %@ %@. Please choose an app to deactivate.", comment: ""), app.name, NSNumber(value: app.appExtensions.count), appExtensionText)
                 }
             }
             else
             {
-                message = NSLocalizedString("Non-developer Apple IDs are limited to 3 active apps. Please choose an app to deactivate.", comment: "")
+                message = NSLocalizedString("Non-developer Apple IDs are limited to \(InstalledApp.freeAccountActiveAppsLimit) active apps. Please choose an app to deactivate.", comment: "")
             }
             
             let activeAppsCount = activeApps.map { $0.requiredActiveSlots }.reduce(0, +)

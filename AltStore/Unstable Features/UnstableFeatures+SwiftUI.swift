@@ -17,14 +17,14 @@ extension UnstableFeatures {
             let rootView = RootView()
                 .environment(\.managedObjectContext, DatabaseManager.shared.viewContext)
             
-            UIApplication.shared.keyWindow?.rootViewController = UIHostingController(rootView: rootView)
+            UIApplication.keyWindow?.rootViewController = UIHostingController(rootView: rootView)
         }
         
         static func onDisable() {
             let storyboard = UIStoryboard(name: "Main", bundle: .main)
             let rootVC = storyboard.instantiateViewController(withIdentifier: "tabBarController") as! TabBarController
             
-            UIApplication.shared.keyWindow?.rootViewController = rootVC
+            UIApplication.keyWindow?.rootViewController = rootVC
         }
     }
 }

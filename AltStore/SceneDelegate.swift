@@ -140,26 +140,26 @@ private extension SceneDelegate
                 }
                 
             case "sidejit-enable":
-                guard UnstableFeatures.enabled(.jitUrlScheme) else { return UIApplication.alertOk(title: "JIT URL scheme unstable feature is not enabled", message: nil) }
+                guard UnstableFeatures.enabled(.jitUrlScheme) else { return UIApplication.alert(title: "JIT URL scheme unstable feature is not enabled", message: nil) }
                 
                 if let bundleID = queryItems["bid"] {
                     DispatchQueue.main.async {
                         do {
                             try debug_app(bundleID)
                         } catch {
-                            UIApplication.alertOk(title: "An error occurred when enabling JIT", message: error.localizedDescription)
+                            UIApplication.alert(title: "An error occurred when enabling JIT", message: error.message())
                         }
                     }
                 } else if let processID = queryItems["pid"] {
                     DispatchQueue.main.async {
                         do {
-                            guard let processID = UInt32(processID) else { return UIApplication.alertOk(title: "An error occurred when enabling JIT", message: "Process ID is not a valid unsigned integer") }
+                            guard let processID = UInt32(processID) else { return UIApplication.alert(title: "An error occurred when enabling JIT", message: "Process ID is not a valid unsigned integer") }
                             try attach_debugger(processID)
                         } catch {
-                            UIApplication.alertOk(title: "An error occurred when enabling JIT", message: error.localizedDescription)
+                            UIApplication.alert(title: "An error occurred when enabling JIT", message: error.message())
                         }
                     }
-                } else { return UIApplication.alertOk(title: "An error occurred when enabling JIT", message: "Please specify a bundle ID using the `bid` query parameter or a process ID using `pid` query parameter") }
+                } else { return UIApplication.alert(title: "An error occurred when enabling JIT", message: "Please specify a bundle ID using the `bid` query parameter or a process ID using `pid` query parameter") }
                 
             default: break
             }

@@ -9,31 +9,39 @@
 import Foundation
 
 class UnstableFeatures {
+    #if UNSTABLE
     fileprivate struct Metadata {
+        /// If true, this Unstable Feature will be available in Advanced Settings instead of being exclusive to Developer Mode.
         var availableOutsideDevMode = false
+        /// Run when the feature is enabled.
         var onEnable = {}
+        /// Run when the feature is disabled
         var onDisable = {}
     }
+    #endif
     
     enum Feature: String, CaseIterable {
         // The value will be the GitHub Issue number. For example, "123" would correspond to https://github.com/SideStore/SideStore/issues/123
         //
-        // Unstable features must have a GitHub Issue for tracking progress, PRs and feedback/bug reporting/commenting.
+        // Unstable Features must have a GitHub Issue for tracking progress, PRs and feedback/bug reporting/commenting.
         //
         // Please order the case by the issue number. They will be ordered by issue number (ascending) in the unstable features menu, so please order them the same way here and in `metadata`.
         
-        case swiftUI = "0"
-        case jitUrlScheme = "00"
+        case swiftUI = "386"
+        case jitUrlScheme = "385"
+        case onboarding = "389"
         
         /// Dummy variant to ensure there is always at least one variant. DO NOT USE!
         case dummy = "dummy"
         
+        #if UNSTABLE
         fileprivate var metadata: Metadata {
             switch self {
             // If your unstable feature is stable enough to be used by nightly users who are not alpha testers or developers,
             // you may want to have it available in the Unstable Features menu in Advanced Settings (outside of dev mode). To do so, add this:
             //case .yourFeature: return Metadata(availableOutsideDevMode: true)
             // You can also add custom hooks for when your feature is enabled or disabled. However, we strongly recommend moving these to a new file. Example: https://github.com/SideStore/SideStore/blob/026392dbc7a5454a39b9287f469d32b5e6768bb8/AltStore/Unstable%20Features/UnstableFeatures%2BSwiftUI.swift
+            // See the `Metadata` struct for more things you can do.
             // Please keep the ordering of the cases in this switch statement the same as the ordering of the enum variants!
 
             case .swiftUI: return Metadata(availableOutsideDevMode: true, onEnable: SwiftUI.onEnable, onDisable: SwiftUI.onDisable)
@@ -42,6 +50,7 @@ class UnstableFeatures {
             default: return Metadata()
             }
         }
+        #endif
     }
     
     #if UNSTABLE

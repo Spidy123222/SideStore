@@ -108,7 +108,7 @@ struct OnboardingView: View {
                 Text("SideStore supports on-device sideloading even on non-jailbroken devices.")
                 Text("For it to work, you have to generate a pairing file as described [here in our documentation](https://wiki.sidestore.io/guides/install#pairing-process).")
                 Text("Once you have the `<UUID>.mobiledevicepairing`, import it using the button below.")
-            }
+            }.lineLimit(nil)
         }, action: {
             ModalNavigationLink("Select Pairing File") {
                 DocumentPicker(selectedUrl: self.$pairingFileURL,
@@ -117,6 +117,7 @@ struct OnboardingView: View {
             .buttonStyle(FilledButtonStyle())
             .onChange(of: self.pairingFileURL) { newValue in
                 guard let url = newValue else {
+                    // TODO: show error that nothing was selected
                     return
                 }
 
@@ -315,7 +316,7 @@ extension OnboardingView {
             try! FileManager.default.removeItem(at: FileManager.default.documentsDirectory.appendingPathComponent("\(pairingFileName)"))
             NotificationManager.shared.reportError(error: error)
             debugPrint("minimuxer failed to start, please restart SideStore.", error)
-//            displayError("minimuxer failed to start, please restart SideStore. \((error as? LocalizedError)?.failureReason ?? "UNKNOWN ERROR!!!!!! REPORT TO GITHUB ISSUES!")")
+//            displayError("minimuxer failed to start, please restart SideStore. \(error.message())")
         }
         start_auto_mounter(documentsDirectory)
     }

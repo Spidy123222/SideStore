@@ -242,7 +242,7 @@ final class AuthenticationOperation: ResultOperation<(ALTTeam, ALTCertificate, A
                 let activeAppsMinimumVersion = OperatingSystemVersion(majorVersion: 13, minorVersion: 3, patchVersion: 1)
                 if team.type == .free, ProcessInfo.processInfo.isOperatingSystemAtLeast(activeAppsMinimumVersion)
                 {
-                    UserDefaults.standard.activeAppsLimit = ALTActiveAppsLimit
+                    UserDefaults.standard.activeAppsLimit = InstalledApp.freeAccountActiveAppsLimit
                 }
                 else
                 {
@@ -297,7 +297,7 @@ private extension AuthenticationOperation
     func present(_ viewController: UIViewController) -> Bool
     {
         if UnstableFeatures.enabled(.swiftUI) {
-            UIApplication.shared.keyWindow?.rootViewController?.present(viewController, animated: true)
+            UIApplication.topController?.present(viewController, animated: true)
         } else {
             guard let presentingViewController = self.presentingViewController else { return false }
             
@@ -324,7 +324,7 @@ private extension AuthenticationOperation
         if let presentingViewController {
             presentingViewController.dismiss(animated: true)
         }
-//        UIApplication.shared.keyWindow?.rootViewController?.presentedViewController?.dismiss(animated: true)
+//        UIApplication.topController?.dismiss(animated: true)
     }
 }
 
@@ -450,15 +450,7 @@ private extension AuthenticationOperation
                             completionHandler(nil)
                         })
                         
-                        let keyWindow = UIApplication.shared.windows.filter { $0.isKeyWindow }.first
-                        
-                        if var topController = keyWindow?.rootViewController {
-                            while let presentedViewController = topController.presentedViewController {
-                                topController = presentedViewController
-                            }
-                            
-                            topController.present(alertController, animated: true, completion: nil)
-                        }
+                        UIApplication.topController?.present(alertController, animated: true, completion: nil)
                     }
                 }
                     

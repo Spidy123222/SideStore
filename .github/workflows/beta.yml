@@ -42,14 +42,21 @@ jobs:
         with:
           xcode-version: ${{ matrix.version }}
 
-      - name: Build SideStore
-        run: make build | xcpretty && exit ${PIPESTATUS[0]}
+      - name: "[Normal] Build SideStore, fakesign app and convert to IPA"
+        run: |
+          make build | xcpretty
+          make fakesign
+          make ipa
 
-      - name: Fakesign app
-        run: make fakesign
+      - name: Enable MDC
+        run: make enable_mdc
 
-      - name: Convert to IPA
-        run: make ipa
+      - name: "[MDC] Build SideStore, fakesign app and convert to IPA"
+        run: |
+          make clean
+          make build DSYM_FOLDER=./MDC-dSYM | xcpretty
+          make fakesign
+          make ipa IPA_NAME=SideStore-MDC.ipa
 
       - name: Get current date
         id: date
@@ -67,7 +74,9 @@ jobs:
           tag_name: ${{ github.ref_name }}
           draft: true
           prerelease: true
-          files: SideStore.ipa
+          files: |
+            SideStore.ipa
+            SideStore-MDC.ipa
           body: |
             <!-- NOTE: to reset SideSource cache, go to `https://apps.sidestore.io/reset-cache/nightly/<sidesource key>`. This is not included in the GitHub Action since it makes draft releases so they can be edited and have a changelog. -->
             Beta builds are hand-picked builds from development commits that will allow you to try out new features earlier than normal. However, **they might contain bugs and other issues. Use at your own risk!**
@@ -86,14 +95,29 @@ jobs:
       - name: Add version to IPA file name
         run: mv SideStore.ipa SideStore-${{ steps.version.outputs.version }}.ipa
 
+      - name: Add version to MDC IPA file name
+        run: mv SideStore-MDC.ipa SideStore-MDC-${{ steps.version.outputs.version }}.ipa
+
       - name: Upload SideStore.ipa Artifact
         uses: actions/upload-artifact@v3.1.0
         with:
           name: SideStore-${{ steps.version.outputs.version }}.ipa
           path: SideStore-${{ steps.version.outputs.version }}.ipa
 
-      - name: Upload *.dSYM Artifact
+      - name: Upload SideStore-MDC.ipa Artifact
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          name: SideStore-MDC-${{ steps.version.outputs.version }}.ipa
+          path: SideStore-MDC-${{ steps.version.outputs.version }}.ipa
+
+      - name: Upload dSYM Artifact
         uses: actions/upload-artifact@v3.1.0
         with:
           name: SideStore-${{ steps.version.outputs.version }}-dSYM
-          path: ./*.dSYM/
+          path: ./dSYM/*
+
+      - name: Upload MDC-dSYM Artifact
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          name: SideStore-MDC-${{ steps.version.outputs.version }}-dSYM
+          path: ./MDC-dSYM/*
