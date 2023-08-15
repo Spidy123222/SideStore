@@ -4,5 +4,6 @@
 
 #import "NSAttributedString+Markdown.h"
 #import "ALTAppPatcher.h"
+#import "DarwinSideJitEnable.h"
 
 #include "fragmentzip.h"
